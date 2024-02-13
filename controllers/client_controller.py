@@ -1,9 +1,8 @@
 from models import client
-import os
-from dotenv import load_dotenv
 
 class ClientController:
     _instance = None
+    _factory = None
 
     def __new__(cls, *args, **kwargs):
         if not cls._instance:
@@ -11,12 +10,14 @@ class ClientController:
         return cls._instance
 
     def __init__(self):
+        from utils.Factory import Factory
         if not hasattr(self, 'is_initialized'):
             self.is_initialized = True
+        self.factory = Factory()
 
     def create_user(self, name, phone):
-        from utils.Factory import Factory
         new_client = client.Client(name, phone)
-        self.factory = Factory()
         client_dao = self.factory.get_controller('clientDAO')
         client_dao.saveClient(new_client)
+
+    

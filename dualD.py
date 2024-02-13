@@ -21,9 +21,12 @@ class MainWindow(QMainWindow, mainScene.Ui_MainWindow):
         dbconection.create_database_if_not_exists(dbname, user, password, host, port)
         table_creation.create_tables_if_not_exist()
 
+        #Test
         self.factory = Factory()
         self.client_controller = self.factory.get_controller('clientController')
         self.client_controller.create_user('Pepe', '1234567890')
+
+        
         # Aquí puedes conectar botones o acciones para crear usuarios, etc.
         # Por ejemplo:
         # self.miBotonCrearUsuario.clicked.connect(self.crear_usuario)

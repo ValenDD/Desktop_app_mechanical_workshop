@@ -65,7 +65,7 @@ class Ui_MainWindow(object):
         __qtablewidgetitem2 = QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(2, __qtablewidgetitem2)
         self.tableWidget.setObjectName(u"tableWidget")
-        self.tableWidget.setEnabled(False)
+        self.tableWidget.setEnabled(True)
         self.tableWidget.setMinimumSize(QSize(782, 539))
         self.tableWidget.setAcceptDrops(False)
         self.tableWidget.setAutoFillBackground(True)
