@@ -1,12 +1,6 @@
 virtual_environment
 .env
 
-__pycache__/newClient.cpython-312.pyc
-controllers/__pycache__/client_controller.cpython-312.pyc
-controllers/__pycache__/client_dao_controller.cpython-312.pyc
-dao/__pycache__/clientDAO.cpython-312.pyc
-exceptions/__pycache__/ClientExist.cpython-312.pyc
-exceptions/__pycache__/ClientExistException.cpython-312.pyc
-exceptions/__pycache__/exceptions.cpython-312.pyc
-views/clientView/__pycache__/newClient.cpython-312.pyc
-views/__pycache__/mainScene.cpython-312.pyc
+__pycache__/
+*.pyc
+*.pyc
