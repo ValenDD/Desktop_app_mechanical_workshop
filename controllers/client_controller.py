@@ -1,5 +1,5 @@
 from models import client
-
+from exceptions.exceptions import ClientExistException
 class ClientController:
     _instance = None
     _factory = None
@@ -16,8 +16,17 @@ class ClientController:
         self.factory = Factory()
 
     def create_user(self, name, phone):
-        new_client = client.Client(name, phone)
+        if not self.client_exists(phone):
+            new_client = client.Client(name, phone)
+            client_dao = self.factory.get_controller('clientDAO')
+            client_dao.saveClient(new_client)
+        else:
+            raise ClientExistException("El cliente ya existe")
+            
+    def list_clients(self):
         client_dao = self.factory.get_controller('clientDAO')
-        client_dao.saveClient(new_client)
-
+        return client_dao.listClients()
     
+    def client_exists(self, phone):
+        client_dao = self.factory.get_controller('clientDAO')
+        return client_dao.clientExists(phone)

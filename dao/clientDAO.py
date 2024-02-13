@@ -12,5 +12,15 @@ class ClientDAO:
             )
             self.conn.commit()
 
+    def list(self):
+        with self.conn.cursor() as cursor:
+            cursor.execute("SELECT * FROM clientes")
+            return cursor.fetchall()
+
+    def client_exists(self, phone):
+        with self.conn.cursor() as cursor:
+            cursor.execute("SELECT * FROM clientes WHERE telefono = %s", (phone,))
+            return cursor.fetchone()
+
     def close_conection(self):
         self.conn.close()

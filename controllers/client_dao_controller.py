@@ -6,7 +6,7 @@ class ClientDAO_Controller:
     _instance = None
     _factory = None
     dbconfig = {}
-    
+
     def __new__(cls, *args, **kwargs):
         if not cls._instance:
             cls._instance = super(ClientDAO_Controller, cls).__new__(cls)
@@ -33,3 +33,15 @@ class ClientDAO_Controller:
             'port': os.getenv('DB_PORT')
         }
         return dbconfig
+    
+    def listClients(self):
+        client_dao = ClientDAO(self.set_dbconfig())
+        clients = client_dao.list()
+        client_dao.close_conection()
+        return clients
+    
+    def clientExists(self, phone):
+        client_dao = ClientDAO(self.set_dbconfig())
+        client = client_dao.client_exists(phone)
+        client_dao.close_conection()
+        return client

@@ -16,9 +16,9 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QIcon, QImage, QKeySequence, QLinearGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
-from PySide6.QtWidgets import (QAbstractScrollArea, QApplication, QGridLayout, QHeaderView,
-    QMainWindow, QMenu, QMenuBar, QSizePolicy,
-    QStatusBar, QTableWidget, QTableWidgetItem, QWidget)
+from PySide6.QtWidgets import (QApplication, QGridLayout, QLabel, QMainWindow,
+    QMenu, QMenuBar, QSizePolicy, QStatusBar,
+    QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -55,41 +55,12 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout = QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName(u"gridLayout")
-        self.tableWidget = QTableWidget(self.centralwidget)
-        if (self.tableWidget.columnCount() < 3):
-            self.tableWidget.setColumnCount(3)
-        __qtablewidgetitem = QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(0, __qtablewidgetitem)
-        __qtablewidgetitem1 = QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(1, __qtablewidgetitem1)
-        __qtablewidgetitem2 = QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(2, __qtablewidgetitem2)
-        self.tableWidget.setObjectName(u"tableWidget")
-        self.tableWidget.setEnabled(True)
-        self.tableWidget.setMinimumSize(QSize(782, 539))
-        self.tableWidget.setAcceptDrops(False)
-        self.tableWidget.setAutoFillBackground(True)
-        self.tableWidget.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
-        self.tableWidget.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
-        self.tableWidget.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContentsOnFirstShow)
-        self.tableWidget.setAlternatingRowColors(True)
-        self.tableWidget.setSortingEnabled(True)
-        self.tableWidget.setRowCount(0)
-        self.tableWidget.setColumnCount(3)
-        self.tableWidget.horizontalHeader().setVisible(True)
-        self.tableWidget.horizontalHeader().setCascadingSectionResizes(False)
-        self.tableWidget.horizontalHeader().setMinimumSectionSize(100)
-        self.tableWidget.horizontalHeader().setDefaultSectionSize(260)
-        self.tableWidget.horizontalHeader().setHighlightSections(False)
-        self.tableWidget.horizontalHeader().setProperty("showSortIndicator", False)
-        self.tableWidget.horizontalHeader().setStretchLastSection(False)
-        self.tableWidget.verticalHeader().setVisible(False)
-        self.tableWidget.verticalHeader().setCascadingSectionResizes(False)
-        self.tableWidget.verticalHeader().setHighlightSections(False)
-        self.tableWidget.verticalHeader().setProperty("showSortIndicator", False)
-        self.tableWidget.verticalHeader().setStretchLastSection(False)
+        self.label = QLabel(self.centralwidget)
+        self.label.setObjectName(u"label")
+        self.label.setPixmap(QPixmap(u"./assets/fondo-MainScene.png"))
+        self.label.setAlignment(Qt.AlignCenter)
 
-        self.gridLayout.addWidget(self.tableWidget, 0, 0, 1, 1)
+        self.gridLayout.addWidget(self.label, 0, 0, 1, 1)
 
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
@@ -156,12 +127,7 @@ class Ui_MainWindow(object):
         self.actionHistorial_de_Gastos.setText(QCoreApplication.translate("MainWindow", u"Historial de gastos", None))
         self.actionCalcular_ganancias.setText(QCoreApplication.translate("MainWindow", u"Calcular ganancias", None))
         self.actionCalcular_gastos.setText(QCoreApplication.translate("MainWindow", u"Calcular gastos", None))
-        ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)
-        ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"Id Cliente", None));
-        ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(1)
-        ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"Nombre Completo", None));
-        ___qtablewidgetitem2 = self.tableWidget.horizontalHeaderItem(2)
-        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"Telefono", None));
+        self.label.setText("")
         self.menuMenu_Clientes.setTitle(QCoreApplication.translate("MainWindow", u"Menu Clientes", None))
         self.menuMenu_Gastos_Ganancias.setTitle(QCoreApplication.translate("MainWindow", u"Menu Gastos/Ganancias", None))
         self.menuMenu_Trabajos.setTitle(QCoreApplication.translate("MainWindow", u"Menu Trabajos", None))
