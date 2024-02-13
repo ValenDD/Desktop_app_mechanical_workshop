@@ -14,57 +14,49 @@
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
-   <item row="0" column="0">
+   <item row="0" column="1">
     <layout class="QGridLayout" name="gridLayout">
-     <item row="1" column="2">
-      <widget class="QLineEdit" name="lineEdit_2"/>
+     <item row="2" column="5">
+      <widget class="QLineEdit" name="Nombre_line_edit"/>
      </item>
-     <item row="0" column="2">
-      <widget class="QLineEdit" name="lineEdit">
-       <property name="maxLength">
-        <number>100</number>
-       </property>
-      </widget>
+     <item row="6" column="5">
+      <widget class="QLineEdit" name="Telefonos_line_edit"/>
      </item>
-     <item row="0" column="0">
-      <widget class="QLabel" name="label_3">
-       <property name="text">
-        <string>Nombres</string>
-       </property>
-      </widget>
+     <item row="4" column="5">
+      <widget class="QLineEdit" name="Apellido_line_edit"/>
      </item>
-     <item row="4" column="2">
-      <widget class="QPushButton" name="pushButton">
+     <item row="7" column="3">
+      <widget class="QPushButton" name="Cancelar_button">
        <property name="text">
         <string>Cancelar</string>
        </property>
       </widget>
      </item>
-     <item row="3" column="0">
-      <widget class="QLabel" name="label">
+     <item row="7" column="4">
+      <widget class="QPushButton" name="Aceptar_button">
+       <property name="text">
+        <string>Aceptar</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="3">
+      <widget class="QLabel" name="Telefono_label">
        <property name="text">
         <string>Telefonos   </string>
        </property>
       </widget>
      </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="label_2">
+     <item row="4" column="3">
+      <widget class="QLabel" name="Apellido_label">
        <property name="text">
         <string>Apellidos</string>
        </property>
       </widget>
      </item>
-     <item row="3" column="2">
-      <widget class="QLineEdit" name="lineEdit_3">
-       <property name="maxLength">
-        <number>200</number>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="2">
-      <widget class="QPushButton" name="pushButton_2">
+     <item row="2" column="3">
+      <widget class="QLabel" name="Nombre_label">
        <property name="text">
-        <string>Aceptar</string>
+        <string>Nombres</string>
        </property>
       </widget>
      </item>
