@@ -1,12 +1,12 @@
 from PySide6.QtWidgets import QWidget
-from views.clientView import newClient
+from views.clientView import newClientUI
 from PySide6.QtGui import QIcon
 from utils.Factory import Factory
-from views.ErrorView import error
+from views.ErrorView import errorUI
 from error import errorWindow
 from exceptions import exceptions
 
-class newClientWindow(QWidget, newClient.Ui_Form):
+class newClientWindow(QWidget, newClientUI.Ui_Form):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
