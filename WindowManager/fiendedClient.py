@@ -11,20 +11,14 @@ class findedClientWindow(QWidget, ClientesEntontradosUI.Ui_Form):
         self.setWindowTitle("DualD - Clientes Encontrados")
         self.name = name
 
-        self.Table_Clientes_encontrados.horizontalHeader().setStyleSheet("""
-            QHeaderView::section {
-                background-color: lightgray;
-                padding: 4px;
-                border: none;
-                border-bottom: 2px solid black;
-                font-weight: bold;
-            }
-            """)
-
+        self.pushButton.clicked.connect(self._close_window)
+        
         self.factory = Factory()
         self.client_controller = self.factory.get_controller('clientController')
         clients = self.client_controller.find_users(self.name)
-        self.add_client_table(clients)
+        
+        self.lineEdit.setText(self.name)
+        self.lineEdit_2.setText(clients[0][2])
 
 
     def add_client_table(self, data):
@@ -33,3 +27,5 @@ class findedClientWindow(QWidget, ClientesEntontradosUI.Ui_Form):
             self.Table_Clientes_encontrados.setItem(i, 0, ClientesEntontradosUI.QTableWidgetItem(data[i][1]))
             self.Table_Clientes_encontrados.setItem(i, 1, ClientesEntontradosUI.QTableWidgetItem(data[i][2]))
             
+    def _close_window(self):
+        self.close()

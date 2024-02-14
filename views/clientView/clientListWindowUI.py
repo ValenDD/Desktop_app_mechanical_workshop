@@ -22,20 +22,18 @@ class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(734, 447)
+        Form.resize(497, 192)
         self.gridLayout_2 = QGridLayout(Form)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
         self.gridLayout = QGridLayout()
         self.gridLayout.setObjectName(u"gridLayout")
         self.Table = QTableWidget(Form)
-        if (self.Table.columnCount() < 3):
-            self.Table.setColumnCount(3)
+        if (self.Table.columnCount() < 2):
+            self.Table.setColumnCount(2)
         __qtablewidgetitem = QTableWidgetItem()
         self.Table.setHorizontalHeaderItem(0, __qtablewidgetitem)
         __qtablewidgetitem1 = QTableWidgetItem()
         self.Table.setHorizontalHeaderItem(1, __qtablewidgetitem1)
-        __qtablewidgetitem2 = QTableWidgetItem()
-        self.Table.setHorizontalHeaderItem(2, __qtablewidgetitem2)
         self.Table.setObjectName(u"Table")
         self.Table.setMouseTracking(True)
         self.Table.setAutoFillBackground(True)
@@ -43,7 +41,7 @@ class Ui_Form(object):
         self.Table.setAlternatingRowColors(True)
         self.Table.setGridStyle(Qt.SolidLine)
         self.Table.setSortingEnabled(True)
-        self.Table.setColumnCount(3)
+        self.Table.setColumnCount(2)
         self.Table.horizontalHeader().setDefaultSectionSize(237)
 
         self.gridLayout.addWidget(self.Table, 0, 0, 1, 1)
@@ -60,10 +58,8 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
         ___qtablewidgetitem = self.Table.horizontalHeaderItem(0)
-        ___qtablewidgetitem.setText(QCoreApplication.translate("Form", u"NOMBRES", None));
+        ___qtablewidgetitem.setText(QCoreApplication.translate("Form", u"NOMBRE Y APELLIDO", None));
         ___qtablewidgetitem1 = self.Table.horizontalHeaderItem(1)
-        ___qtablewidgetitem1.setText(QCoreApplication.translate("Form", u"APELLIDOS", None));
-        ___qtablewidgetitem2 = self.Table.horizontalHeaderItem(2)
-        ___qtablewidgetitem2.setText(QCoreApplication.translate("Form", u"TELEFONO", None));
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("Form", u"TELEFONO", None));
     # retranslateUi
 

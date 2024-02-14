@@ -1,5 +1,6 @@
 from models import client
 from exceptions.exceptions import ClientExistException
+from exceptions.exceptions import ClientNotExistException
 class ClientController:
     _instance = None
     _factory = None
@@ -27,10 +28,21 @@ class ClientController:
         client_dao = self.factory.get_controller('clientDAO')
         return client_dao.listClients()
     
-    def client_exists(self, phone):
+    def list_client_only_name(self):
         client_dao = self.factory.get_controller('clientDAO')
-        return client_dao.clientExists(phone)
+        return client_dao.listClientOnlyName()
+        
+    def client_exists(self, name):
+        client_dao = self.factory.get_controller('clientDAO')
+        return client_dao.clientExists(name)
 
     def find_users(self, name):
         client_dao = self.factory.get_controller('clientDAO')
         return client_dao.findClients(name)
+    
+    def delete_client(self, name):
+        if self.client_exists(name):
+            client_dao = self.factory.get_controller('clientDAO')
+            client_dao.deleteClient(name)
+        else:
+            raise ClientNotExistException("El cliente no existe")

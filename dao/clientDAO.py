@@ -17,9 +17,14 @@ class ClientDAO:
             cursor.execute("SELECT * FROM clientes")
             return cursor.fetchall()
 
-    def client_exists(self, phone):
+    def list_only_name(self):
         with self.conn.cursor() as cursor:
-            cursor.execute("SELECT * FROM clientes WHERE telefono = %s", (phone,))
+            cursor.execute("SELECT nombre FROM clientes")
+            return cursor.fetchall()
+
+    def client_exists(self, name):
+        with self.conn.cursor() as cursor:
+            cursor.execute("SELECT * FROM clientes WHERE nombre = %s", (name,))
             return cursor.fetchone()
 
     def close_conection(self):
@@ -29,3 +34,8 @@ class ClientDAO:
         with self.conn.cursor() as cursor:
             cursor.execute("SELECT * FROM clientes WHERE nombre = %s", (name,))
             return cursor.fetchall()
+        
+    def delete(self, name):
+        with self.conn.cursor() as cursor:
+            cursor.execute("DELETE FROM clientes WHERE nombre = %s", (name,))
+            self.conn.commit()

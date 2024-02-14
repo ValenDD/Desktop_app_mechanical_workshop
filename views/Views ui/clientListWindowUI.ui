@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>734</width>
-    <height>447</height>
+    <width>497</width>
+    <height>192</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -37,19 +37,14 @@
         <bool>true</bool>
        </property>
        <property name="columnCount">
-        <number>3</number>
+        <number>2</number>
        </property>
        <attribute name="horizontalHeaderDefaultSectionSize">
         <number>237</number>
        </attribute>
        <column>
         <property name="text">
-         <string>NOMBRES</string>
-        </property>
-       </column>
-       <column>
-        <property name="text">
-         <string>APELLIDOS</string>
+         <string>NOMBRE Y APELLIDO</string>
         </property>
        </column>
        <column>

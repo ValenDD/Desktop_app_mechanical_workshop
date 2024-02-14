@@ -38,6 +38,9 @@ class newClientWindow(QWidget, newClientUI.Ui_Form):
         self.client_controller = self.factory.get_controller("clientController")
         try:
             self.client_controller.create_user(Nombre_completo, Telefono)
+            self.error = errorWindow()
+            self.error.ErrorLabel.setText("Cliente creado con éxito")
+            self.error.show()
             self.close_window()
         except exceptions.ClientExistException as e:
             self.error = errorWindow()

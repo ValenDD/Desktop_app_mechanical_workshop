@@ -29,7 +29,6 @@ class clientListWindow(QWidget, clientListWindowUI.Ui_Form):
     def add_client_table(self, data):
         self.Table.setRowCount(len(data))
         for i in range(len(data)):
-            self.Table.setItem(i, 0, clientListWindowUI.QTableWidgetItem(data[i][0]))
-            self.Table.setItem(i, 1, clientListWindowUI.QTableWidgetItem(data[i][1]))
-            self.Table.setItem(i, 2, clientListWindowUI.QTableWidgetItem(data[i][2]))
+            self.Table.setItem(i, 0, clientListWindowUI.QTableWidgetItem(data[i][1]))
+            self.Table.setItem(i, 1, clientListWindowUI.QTableWidgetItem(data[i][2]))
         

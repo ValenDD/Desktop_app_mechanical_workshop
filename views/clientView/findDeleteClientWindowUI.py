@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ClientesEntontradosUI.ui'
+## Form generated from reading UI file 'findDeleteClientWindowUI.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.6.1
 ##
@@ -15,49 +15,40 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QGridLayout, QLabel, QLineEdit,
+from PySide6.QtWidgets import (QApplication, QComboBox, QGridLayout, QLabel,
     QPushButton, QSizePolicy, QWidget)
 
 class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(365, 287)
+        Form.resize(515, 208)
         self.gridLayout_2 = QGridLayout(Form)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
         self.gridLayout = QGridLayout()
         self.gridLayout.setObjectName(u"gridLayout")
-        self.lineEdit_2 = QLineEdit(Form)
-        self.lineEdit_2.setObjectName(u"lineEdit_2")
-        self.lineEdit_2.setEnabled(False)
-        self.lineEdit_2.setMouseTracking(False)
+        self.lista_clientes = QComboBox(Form)
+        self.lista_clientes.setObjectName(u"lista_clientes")
 
-        self.gridLayout.addWidget(self.lineEdit_2, 1, 1, 1, 1)
-
-        self.label_2 = QLabel(Form)
-        self.label_2.setObjectName(u"label_2")
-
-        self.gridLayout.addWidget(self.label_2, 0, 0, 1, 1)
-
-        self.lineEdit = QLineEdit(Form)
-        self.lineEdit.setObjectName(u"lineEdit")
-        self.lineEdit.setEnabled(False)
-        self.lineEdit.setMouseTracking(False)
-
-        self.gridLayout.addWidget(self.lineEdit, 0, 1, 1, 1)
+        self.gridLayout.addWidget(self.lista_clientes, 0, 1, 1, 1)
 
         self.label = QLabel(Form)
         self.label.setObjectName(u"label")
 
-        self.gridLayout.addWidget(self.label, 1, 0, 1, 1)
+        self.gridLayout.addWidget(self.label, 0, 0, 1, 1)
 
-        self.pushButton = QPushButton(Form)
-        self.pushButton.setObjectName(u"pushButton")
+        self.Eliminar_cliente = QPushButton(Form)
+        self.Eliminar_cliente.setObjectName(u"Eliminar_cliente")
 
-        self.gridLayout.addWidget(self.pushButton, 2, 1, 1, 1)
+        self.gridLayout.addWidget(self.Eliminar_cliente, 1, 1, 1, 1)
+
+        self.Cancelar = QPushButton(Form)
+        self.Cancelar.setObjectName(u"Cancelar")
+
+        self.gridLayout.addWidget(self.Cancelar, 1, 0, 1, 1)
 
 
-        self.gridLayout_2.addLayout(self.gridLayout, 1, 1, 1, 1)
+        self.gridLayout_2.addLayout(self.gridLayout, 0, 0, 1, 1)
 
 
         self.retranslateUi(Form)
@@ -67,8 +58,8 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
-        self.label_2.setText(QCoreApplication.translate("Form", u"Nombre", None))
-        self.label.setText(QCoreApplication.translate("Form", u"Telefono", None))
-        self.pushButton.setText(QCoreApplication.translate("Form", u"Cancelar", None))
+        self.label.setText(QCoreApplication.translate("Form", u"Seleccione el cliente a ELIMINAR", None))
+        self.Eliminar_cliente.setText(QCoreApplication.translate("Form", u"Eliminar", None))
+        self.Cancelar.setText(QCoreApplication.translate("Form", u"Cancelar", None))
     # retranslateUi
 

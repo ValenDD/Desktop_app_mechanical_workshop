@@ -40,9 +40,15 @@ class ClientDAO_Controller:
         client_dao.close_conection()
         return clients
     
-    def clientExists(self, phone):
+    def listClientOnlyName(self):
         client_dao = ClientDAO(self.set_dbconfig())
-        client = client_dao.client_exists(phone)
+        clients = client_dao.list_only_name()
+        client_dao.close_conection()
+        return clients
+    
+    def clientExists(self, name):
+        client_dao = ClientDAO(self.set_dbconfig())
+        client = client_dao.client_exists(name)
         client_dao.close_conection()
         return client
     
@@ -51,3 +57,8 @@ class ClientDAO_Controller:
         clients = client_dao.find(name)
         client_dao.close_conection()
         return clients
+    
+    def deleteClient(self, name):
+        client_dao = ClientDAO(self.set_dbconfig())
+        client_dao.delete(name)
+        client_dao.close_conection()

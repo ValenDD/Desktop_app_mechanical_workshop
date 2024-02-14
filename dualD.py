@@ -7,6 +7,7 @@ from WindowManager.newClient import newClientWindow
 from views.clientView import *
 from WindowManager.clientList import clientListWindow
 from WindowManager.findClient import findClientWindow
+from WindowManager.findDeleteClient import findDeleteClientWindow
 from utils import table_creation
 from utils import dbconection
 from PySide6.QtGui import QIcon
@@ -30,8 +31,12 @@ class MainWindow(QMainWindow, mainSceneUI.Ui_MainWindow):
         self.actionNuevo_Cliente.triggered.connect(self._show_new_client_windows)
         self.actionListar_todos_los_Clientes.triggered.connect(self._show_client_list)
         self.actionBuscar_Cliente.triggered.connect(self._show_find_client_window)
-        
-            
+        self.actionEliminar_Cliente.triggered.connect(self._show_delete_client_window)
+    
+    def _show_delete_client_window(self):
+        self.findDelete_client = findDeleteClientWindow()
+        self.findDelete_client.show()
+                
     def _show_find_client_window(self):
         self.find_client = findClientWindow()
         self.find_client.show()

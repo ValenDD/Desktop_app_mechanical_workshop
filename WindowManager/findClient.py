@@ -11,11 +11,14 @@ class findClientWindow(QWidget, BuscarClienteUI.Ui_Form):
         self.setWindowTitle("DualD - Buscar Cliente")
 
         self.Buscar_Usuarios.clicked.connect(self._show_finded_client)
-
+        
     def _show_finded_client(self):
             Nombre = self.Nombre_line_edit.text()
             Apellido = self.Apellido_line_edit.text()
             NombreCompleto = Nombre + " " + Apellido
             self.finded_users = findedClientWindow(NombreCompleto)
             self.finded_users.show()
-
+            self._close_window()
+            
+    def _close_window(self):
+        self.close()
