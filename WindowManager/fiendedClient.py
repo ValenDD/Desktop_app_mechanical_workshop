@@ -2,6 +2,8 @@ from PySide6.QtWidgets import QWidget
 from views.clientView import ClientesEntontradosUI
 from PySide6.QtGui import QIcon
 from utils.Factory import Factory
+from WindowManager.error import errorWindow
+from exceptions import exceptions
 
 class findedClientWindow(QWidget, ClientesEntontradosUI.Ui_Form):
     def __init__(self, name):
@@ -15,17 +17,20 @@ class findedClientWindow(QWidget, ClientesEntontradosUI.Ui_Form):
         
         self.factory = Factory()
         self.client_controller = self.factory.get_controller('clientController')
-        clients = self.client_controller.find_users(self.name)
-        
-        self.lineEdit.setText(self.name)
-        self.lineEdit_2.setText(clients[0][2])
-
-
-    def add_client_table(self, data):
-        self.Table_Clientes_encontrados.setRowCount(len(data))
-        for i in range(len(data)):
-            self.Table_Clientes_encontrados.setItem(i, 0, ClientesEntontradosUI.QTableWidgetItem(data[i][1]))
-            self.Table_Clientes_encontrados.setItem(i, 1, ClientesEntontradosUI.QTableWidgetItem(data[i][2]))
+        try:
+            clients = self.client_controller.find_users(self.name)
+            self.lineEdit.setText(clients[0][0])
+            self.lineEdit_2.setText(clients[0][1])
+        except exceptions.ClientNotExistException as e:
+            self.error = errorWindow()
+            self.error.ErrorLabel.setText(str(e))
+            self.error.show()
+            self.close()
+        except Exception as e:
+            self.error = errorWindow()
+            self.error.ErrorLabel.setText(str(e))
+            self.error.show()
+            self.close()
             
     def _close_window(self):
         self.close()
