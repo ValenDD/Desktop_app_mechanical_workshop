@@ -17,9 +17,9 @@ class newClientWindow(QWidget, newClientUI.Ui_Form):
         
 
     def pick_date(self):
-        Nombre = self.Nombre_line_edit.text()
-        Apellido = self.Apellido_line_edit.text()
-        Telefono = self.Telefonos_line_edit.text()
+        Nombre = self.Nombre_line_edit.text().strip()
+        Apellido = self.Apellido_line_edit.text().strip()
+        Telefono = self.Telefonos_line_edit.text().strip()
 
         if Nombre == "" or Apellido == "" or Telefono == "":
             self.error = errorWindow()
@@ -33,6 +33,12 @@ class newClientWindow(QWidget, newClientUI.Ui_Form):
             self.error.show()
             return
 
+        if len(Telefono) < 9:
+            self.error = errorWindow()
+            self.error.ErrorLabel.setText("El teléfono debe ser mayor a 8 digitos")
+            self.error.show()
+            return
+        
         Nombre_completo = Nombre + " " + Apellido
         self.factory = Factory()
         self.client_controller = self.factory.get_controller("clientController")

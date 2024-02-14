@@ -16,39 +16,60 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QComboBox, QGridLayout, QLabel,
-    QPushButton, QSizePolicy, QWidget)
+    QPushButton, QSizePolicy, QSpacerItem, QWidget)
 
 class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(515, 208)
+        Form.resize(376, 208)
         self.gridLayout_2 = QGridLayout(Form)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout_2.addItem(self.horizontalSpacer_2, 0, 2, 1, 1)
+
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout_2.addItem(self.horizontalSpacer, 0, 0, 1, 1)
+
         self.gridLayout = QGridLayout()
         self.gridLayout.setObjectName(u"gridLayout")
-        self.lista_clientes = QComboBox(Form)
-        self.lista_clientes.setObjectName(u"lista_clientes")
-
-        self.gridLayout.addWidget(self.lista_clientes, 0, 1, 1, 1)
-
         self.label = QLabel(Form)
         self.label.setObjectName(u"label")
 
-        self.gridLayout.addWidget(self.label, 0, 0, 1, 1)
+        self.gridLayout.addWidget(self.label, 0, 1, 1, 1)
 
-        self.Eliminar_cliente = QPushButton(Form)
-        self.Eliminar_cliente.setObjectName(u"Eliminar_cliente")
+        self.lista_clientes = QComboBox(Form)
+        self.lista_clientes.setObjectName(u"lista_clientes")
 
-        self.gridLayout.addWidget(self.Eliminar_cliente, 1, 1, 1, 1)
-
-        self.Cancelar = QPushButton(Form)
-        self.Cancelar.setObjectName(u"Cancelar")
-
-        self.gridLayout.addWidget(self.Cancelar, 1, 0, 1, 1)
+        self.gridLayout.addWidget(self.lista_clientes, 0, 2, 1, 1)
 
 
-        self.gridLayout_2.addLayout(self.gridLayout, 0, 0, 1, 1)
+        self.gridLayout_2.addLayout(self.gridLayout, 0, 1, 1, 1)
+
+        self.gridLayout_3 = QGridLayout()
+        self.gridLayout_3.setObjectName(u"gridLayout_3")
+        self.Eliminar_button = QPushButton(Form)
+        self.Eliminar_button.setObjectName(u"Eliminar_button")
+
+        self.gridLayout_3.addWidget(self.Eliminar_button, 0, 2, 1, 1)
+
+        self.Cancelar_button = QPushButton(Form)
+        self.Cancelar_button.setObjectName(u"Cancelar_button")
+
+        self.gridLayout_3.addWidget(self.Cancelar_button, 0, 1, 1, 1)
+
+        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout_3.addItem(self.horizontalSpacer_3, 0, 0, 1, 1)
+
+        self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout_3.addItem(self.horizontalSpacer_4, 0, 3, 1, 1)
+
+
+        self.gridLayout_2.addLayout(self.gridLayout_3, 1, 1, 1, 1)
 
 
         self.retranslateUi(Form)
@@ -59,7 +80,7 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
         self.label.setText(QCoreApplication.translate("Form", u"Seleccione el cliente a ELIMINAR", None))
-        self.Eliminar_cliente.setText(QCoreApplication.translate("Form", u"Eliminar", None))
-        self.Cancelar.setText(QCoreApplication.translate("Form", u"Cancelar", None))
+        self.Eliminar_button.setText(QCoreApplication.translate("Form", u"Eliminar", None))
+        self.Cancelar_button.setText(QCoreApplication.translate("Form", u"Cancelar", None))
     # retranslateUi
 

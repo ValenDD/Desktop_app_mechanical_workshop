@@ -58,6 +58,11 @@ class ClientDAO_Controller:
         client_dao.close_conection()
         return clients
     
+    def updateClientName(self, name, new_name, new_phone):
+        client_dao = ClientDAO(self.set_dbconfig())
+        client_dao.update(name, new_name, new_phone)
+        client_dao.close_conection()
+    
     def deleteClient(self, name):
         client_dao = ClientDAO(self.set_dbconfig())
         client_dao.delete(name)

@@ -20,7 +20,8 @@ class findDeleteClientWindow(QWidget, findDeleteClientWindowUI.Ui_Form):
         for index in range(len(clients)):
             self.lista_clientes.addItem(clients[index][0])
         
-        self.Eliminar_cliente.clicked.connect(self._delete_client)
+        self.Eliminar_button.clicked.connect(self._delete_client)
+        self.Cancelar_button.clicked.connect(self.close)
         
     def _delete_client(self):
         client_name = self.lista_clientes.currentText()
@@ -29,7 +30,7 @@ class findDeleteClientWindow(QWidget, findDeleteClientWindowUI.Ui_Form):
             self.error = errorWindow()
             self.error.ErrorLabel.setText("Cliente eliminado con éxito")
             self.error.show()
-            self.close()
+            self._close_window()
         except exceptions.ClientNotExistException as e:
             self.error = errorWindow()
             self.error.ErrorLabel.setText(str(e))
@@ -39,3 +40,5 @@ class findDeleteClientWindow(QWidget, findDeleteClientWindowUI.Ui_Form):
             self.error.ErrorLabel.setText(str(e))
             self.error.show()
         
+    def _close_window(self):
+        self.close()

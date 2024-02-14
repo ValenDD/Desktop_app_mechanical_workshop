@@ -6,11 +6,11 @@ from views import mainSceneUI
 from WindowManager.newClient import newClientWindow
 from views.clientView import *
 from WindowManager.clientList import clientListWindow
-from WindowManager.findClient import findClientWindow
+from WindowManager.update_search_client import updateSearchClient
 from WindowManager.findDeleteClient import findDeleteClientWindow
 from utils import table_creation
 from utils import dbconection
-from PySide6.QtGui import QIcon
+from PySide6.QtGui import QIcon, QPixmap
 
 class MainWindow(QMainWindow, mainSceneUI.Ui_MainWindow):
     def __init__(self):
@@ -18,6 +18,7 @@ class MainWindow(QMainWindow, mainSceneUI.Ui_MainWindow):
         self.setupUi(self)
         self.setWindowIcon(QIcon('./assets/icono-windows.png'))
         self.setWindowTitle("DualD - Sistema de gestión de clientes")
+        self.label.setPixmap(QPixmap(u"./assets/fondo-MainScene.png"))
         load_dotenv()
         # Configura tu DSN de PostgreSQL aquí
         dbname = os.getenv('DB_NAME')
@@ -30,7 +31,7 @@ class MainWindow(QMainWindow, mainSceneUI.Ui_MainWindow):
 
         self.actionNuevo_Cliente.triggered.connect(self._show_new_client_windows)
         self.actionListar_todos_los_Clientes.triggered.connect(self._show_client_list)
-        self.actionBuscar_Cliente.triggered.connect(self._show_find_client_window)
+        self.actionActualizar_informacion.triggered.connect(self._show_find_client_window)
         self.actionEliminar_Cliente.triggered.connect(self._show_delete_client_window)
     
     def _show_delete_client_window(self):
@@ -38,7 +39,9 @@ class MainWindow(QMainWindow, mainSceneUI.Ui_MainWindow):
         self.findDelete_client.show()
                 
     def _show_find_client_window(self):
-        self.find_client = findClientWindow()
+        from utils.Factory import Factory
+        self.client_controller = Factory().get_controller('clientController')
+        self.find_client = updateSearchClient(self.client_controller.list_client_only_name())
         self.find_client.show()
 
     def _show_new_client_windows(self):

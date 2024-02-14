@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'MainScene.ui'
+## Form generated from reading UI file 'MainSceneUI.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.6.1
 ##
@@ -57,7 +57,7 @@ class Ui_MainWindow(object):
         self.gridLayout.setObjectName(u"gridLayout")
         self.label = QLabel(self.centralwidget)
         self.label.setObjectName(u"label")
-        self.label.setPixmap(QPixmap(u"./assets/fondo-MainScene.png"))
+        self.label.setPixmap(QPixmap(u"../assets/fondo-MainScene.png"))
         self.label.setAlignment(Qt.AlignCenter)
 
         self.gridLayout.addWidget(self.label, 0, 0, 1, 1)
@@ -85,8 +85,6 @@ class Ui_MainWindow(object):
         self.menuMenu_Clientes.addAction(self.actionEliminar_Cliente)
         self.menuMenu_Clientes.addSeparator()
         self.menuMenu_Clientes.addAction(self.actionActualizar_informacion)
-        self.menuMenu_Clientes.addSeparator()
-        self.menuMenu_Clientes.addAction(self.actionBuscar_Cliente)
         self.menuMenu_Clientes.addSeparator()
         self.menuMenu_Clientes.addAction(self.actionListar_todos_los_Clientes)
         self.menuMenu_Clientes.addSeparator()
@@ -116,7 +114,7 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.actionNuevo_Cliente.setText(QCoreApplication.translate("MainWindow", u"Nuevo Cliente", None))
         self.actionEliminar_Cliente.setText(QCoreApplication.translate("MainWindow", u"Eliminar Cliente", None))
-        self.actionActualizar_informacion.setText(QCoreApplication.translate("MainWindow", u"Actualizar informacion", None))
+        self.actionActualizar_informacion.setText(QCoreApplication.translate("MainWindow", u"Actualizar informacion / Buscar", None))
         self.actionBuscar_Cliente.setText(QCoreApplication.translate("MainWindow", u"Buscar Cliente", None))
         self.actionListar_todos_los_Clientes.setText(QCoreApplication.translate("MainWindow", u"Listar todos los Clientes", None))
         self.actionNuevo_Trabajo.setText(QCoreApplication.translate("MainWindow", u"Nuevo Trabajo", None))

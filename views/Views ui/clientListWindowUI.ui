@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>497</width>
-    <height>192</height>
+    <width>535</width>
+    <height>247</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -27,6 +27,9 @@
        <property name="lineWidth">
         <number>2</number>
        </property>
+       <property name="sizeAdjustPolicy">
+        <enum>QAbstractScrollArea::AdjustToContents</enum>
+       </property>
        <property name="alternatingRowColors">
         <bool>true</bool>
        </property>
@@ -41,6 +44,9 @@
        </property>
        <attribute name="horizontalHeaderDefaultSectionSize">
         <number>237</number>
+       </attribute>
+       <attribute name="horizontalHeaderStretchLastSection">
+        <bool>true</bool>
        </attribute>
        <column>
         <property name="text">

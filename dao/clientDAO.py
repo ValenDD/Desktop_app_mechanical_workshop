@@ -35,6 +35,14 @@ class ClientDAO:
             cursor.execute("SELECT * FROM clientes WHERE nombre = %s", (name,))
             return cursor.fetchall()
         
+    def update(self, name, new_name, new_phone):
+        with self.conn.cursor() as cursor:
+            cursor.execute(
+                "UPDATE clientes SET nombre = %s, telefono = %s WHERE nombre = %s",
+                (new_name, new_phone, name)
+            )
+            self.conn.commit() 
+    
     def delete(self, name):
         with self.conn.cursor() as cursor:
             cursor.execute("DELETE FROM clientes WHERE nombre = %s", (name,))

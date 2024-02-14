@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'clientListWindow.ui'
+## Form generated from reading UI file 'clientListWindowUI.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.6.1
 ##
@@ -15,14 +15,14 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QGridLayout, QHeaderView, QSizePolicy,
-    QTableWidget, QTableWidgetItem, QWidget)
+from PySide6.QtWidgets import (QAbstractScrollArea, QApplication, QGridLayout, QHeaderView,
+    QSizePolicy, QTableWidget, QTableWidgetItem, QWidget)
 
 class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(497, 192)
+        Form.resize(535, 247)
         self.gridLayout_2 = QGridLayout(Form)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
         self.gridLayout = QGridLayout()
@@ -38,11 +38,13 @@ class Ui_Form(object):
         self.Table.setMouseTracking(True)
         self.Table.setAutoFillBackground(True)
         self.Table.setLineWidth(2)
+        self.Table.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContents)
         self.Table.setAlternatingRowColors(True)
         self.Table.setGridStyle(Qt.SolidLine)
         self.Table.setSortingEnabled(True)
         self.Table.setColumnCount(2)
         self.Table.horizontalHeader().setDefaultSectionSize(237)
+        self.Table.horizontalHeader().setStretchLastSection(True)
 
         self.gridLayout.addWidget(self.Table, 0, 0, 1, 1)
 
