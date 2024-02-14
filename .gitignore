@@ -4,3 +4,10 @@ virtual_environment
 __pycache__/
 *.pyc
 *.pyc
+utils/__pycache__/table_creation.cpython-312.pyc
+utils/__pycache__/Factory.cpython-312.pyc
+utils/__pycache__/dbconection.cpython-312.pyc
+controllers/__pycache__/client_dao_controller.cpython-312.pyc
+dao/__pycache__/clientDAO.cpython-312.pyc
+models/__pycache__/client.cpython-312.pyc
+controllers/__pycache__/client_controller.cpython-312.pyc
