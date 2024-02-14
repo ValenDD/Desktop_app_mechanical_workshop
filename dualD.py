@@ -3,9 +3,9 @@ from dotenv import load_dotenv
 import os
 from PySide6.QtWidgets import QApplication, QMainWindow
 from views import mainSceneUI
-from newClient import newClientWindow
+from WindowManager.newClient import newClientWindow
 from views.clientView import *
-from clientList import clientListWindow
+from WindowManager.clientList import clientListWindow
 from utils import table_creation
 from utils import dbconection
 from PySide6.QtGui import QIcon
