@@ -45,3 +45,9 @@ class ClientDAO_Controller:
         client = client_dao.client_exists(phone)
         client_dao.close_conection()
         return client
+    
+    def findClients(self, name):
+        client_dao = ClientDAO(self.set_dbconfig())
+        clients = client_dao.find(name)
+        client_dao.close_conection()
+        return clients

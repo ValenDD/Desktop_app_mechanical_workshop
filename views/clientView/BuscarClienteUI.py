@@ -25,6 +25,13 @@ class Ui_Form(object):
         Form.resize(450, 217)
         self.gridLayout_2 = QGridLayout(Form)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
+        self.Nombre_line_edit = QLineEdit(Form)
+        self.Nombre_line_edit.setObjectName(u"Nombre_line_edit")
+
+        self.gridLayout_2.addWidget(self.Nombre_line_edit, 0, 1, 1, 1)
+
+        
+
         self.gridLayout = QGridLayout()
         self.gridLayout.setObjectName(u"gridLayout")
         self.label = QLabel(Form)
@@ -35,16 +42,20 @@ class Ui_Form(object):
 
         self.gridLayout_2.addLayout(self.gridLayout, 0, 0, 1, 1)
 
-        self.Nombre_line_edit = QLineEdit(Form)
-        self.Nombre_line_edit.setObjectName(u"Nombre_line_edit")
+        self.label_2 = QLabel(Form)
+        self.label_2.setObjectName(u"label_2")
 
-        self.gridLayout_2.addWidget(self.Nombre_line_edit, 0, 1, 1, 1)
+        self.gridLayout_2.addWidget(self.label_2, 1, 0, 1, 1)
 
-        self.pushButton = QPushButton(Form)
-        self.pushButton.setObjectName(u"pushButton")
+        self.Apellido_line_edit = QLineEdit(Form)
+        self.Apellido_line_edit.setObjectName(u"Apellido_line_edit")
 
-        self.gridLayout_2.addWidget(self.pushButton, 1, 1, 1, 1)
+        self.gridLayout_2.addWidget(self.Apellido_line_edit, 1, 1, 1, 1)
 
+        self.Buscar_Usuarios = QPushButton(Form)
+        self.Buscar_Usuarios.setObjectName(u"Buscar_Usuarios")
+
+        self.gridLayout_2.addWidget(self.Buscar_Usuarios, 2, 1, 1, 1)
 
         self.retranslateUi(Form)
 
@@ -53,7 +64,8 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
+        self.Buscar_Usuarios.setText(QCoreApplication.translate("Form", u"Buscar", None))
         self.label.setText(QCoreApplication.translate("Form", u"Nombre", None))
-        self.pushButton.setText(QCoreApplication.translate("Form", u"Buscar", None))
+        self.label_2.setText(QCoreApplication.translate("Form", u"Apellidos", None))
     # retranslateUi
 

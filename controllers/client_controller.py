@@ -30,3 +30,7 @@ class ClientController:
     def client_exists(self, phone):
         client_dao = self.factory.get_controller('clientDAO')
         return client_dao.clientExists(phone)
+
+    def find_users(self, name):
+        client_dao = self.factory.get_controller('clientDAO')
+        return client_dao.findClients(name)

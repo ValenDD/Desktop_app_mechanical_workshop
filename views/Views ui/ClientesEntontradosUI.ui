@@ -19,16 +19,11 @@
      <item row="0" column="0">
       <widget class="QTableWidget" name="Table_Clientes_encontrados">
        <attribute name="horizontalHeaderDefaultSectionSize">
-        <number>199</number>
+        <number>298</number>
        </attribute>
        <column>
         <property name="text">
-         <string>NOMBRES</string>
-        </property>
-       </column>
-       <column>
-        <property name="text">
-         <string>APELLIDOS</string>
+         <string>NOMBRE</string>
         </property>
        </column>
        <column>

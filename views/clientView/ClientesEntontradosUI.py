@@ -28,16 +28,14 @@ class Ui_Form(object):
         self.gridLayout = QGridLayout()
         self.gridLayout.setObjectName(u"gridLayout")
         self.Table_Clientes_encontrados = QTableWidget(Form)
-        if (self.Table_Clientes_encontrados.columnCount() < 3):
-            self.Table_Clientes_encontrados.setColumnCount(3)
+        if (self.Table_Clientes_encontrados.columnCount() < 2):
+            self.Table_Clientes_encontrados.setColumnCount(2)
         __qtablewidgetitem = QTableWidgetItem()
         self.Table_Clientes_encontrados.setHorizontalHeaderItem(0, __qtablewidgetitem)
         __qtablewidgetitem1 = QTableWidgetItem()
         self.Table_Clientes_encontrados.setHorizontalHeaderItem(1, __qtablewidgetitem1)
-        __qtablewidgetitem2 = QTableWidgetItem()
-        self.Table_Clientes_encontrados.setHorizontalHeaderItem(2, __qtablewidgetitem2)
         self.Table_Clientes_encontrados.setObjectName(u"Table_Clientes_encontrados")
-        self.Table_Clientes_encontrados.horizontalHeader().setDefaultSectionSize(199)
+        self.Table_Clientes_encontrados.horizontalHeader().setDefaultSectionSize(298)
 
         self.gridLayout.addWidget(self.Table_Clientes_encontrados, 0, 0, 1, 1)
 
@@ -53,10 +51,8 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
         ___qtablewidgetitem = self.Table_Clientes_encontrados.horizontalHeaderItem(0)
-        ___qtablewidgetitem.setText(QCoreApplication.translate("Form", u"NOMBRES", None));
+        ___qtablewidgetitem.setText(QCoreApplication.translate("Form", u"NOMBRE", None));
         ___qtablewidgetitem1 = self.Table_Clientes_encontrados.horizontalHeaderItem(1)
-        ___qtablewidgetitem1.setText(QCoreApplication.translate("Form", u"APELLIDOS", None));
-        ___qtablewidgetitem2 = self.Table_Clientes_encontrados.horizontalHeaderItem(2)
-        ___qtablewidgetitem2.setText(QCoreApplication.translate("Form", u"TELEFONO", None));
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("Form", u"TELEFONO", None));
     # retranslateUi
 

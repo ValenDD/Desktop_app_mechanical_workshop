@@ -6,6 +6,7 @@ from views import mainSceneUI
 from WindowManager.newClient import newClientWindow
 from views.clientView import *
 from WindowManager.clientList import clientListWindow
+from WindowManager.findClient import findClientWindow
 from utils import table_creation
 from utils import dbconection
 from PySide6.QtGui import QIcon
@@ -26,16 +27,20 @@ class MainWindow(QMainWindow, mainSceneUI.Ui_MainWindow):
         dbconection.create_database_if_not_exists(dbname, user, password, host, port)
         table_creation.create_tables_if_not_exist()
 
-        #Action Connect
-        self.actionNuevo_Cliente.triggered.connect(self.show_new_client_windows)
-        self.actionListar_todos_los_Clientes.triggered.connect(self.show_client_list)
-        # Aquí puedes conectar botones o acciones para crear usuarios, etc.
+        self.actionNuevo_Cliente.triggered.connect(self._show_new_client_windows)
+        self.actionListar_todos_los_Clientes.triggered.connect(self._show_client_list)
+        self.actionBuscar_Cliente.triggered.connect(self._show_find_client_window)
+        
+            
+    def _show_find_client_window(self):
+        self.find_client = findClientWindow()
+        self.find_client.show()
 
-    def show_new_client_windows(self):
+    def _show_new_client_windows(self):
         self.new_client = newClientWindow()
         self.new_client.show()
         
-    def show_client_list(self):
+    def _show_client_list(self):
         self.client_list = clientListWindow()
         self.client_list.show()
 

@@ -24,3 +24,8 @@ class ClientDAO:
 
     def close_conection(self):
         self.conn.close()
+
+    def find(self, name):
+        with self.conn.cursor() as cursor:
+            cursor.execute("SELECT * FROM clientes WHERE nombre = %s", (name,))
+            return cursor.fetchall()
