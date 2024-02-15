@@ -36,8 +36,11 @@ class MainWindow(QMainWindow, mainSceneUI.Ui_MainWindow):
         self.actionListar_todos_los_Clientes.triggered.connect(self._show_client_list)
         self.actionActualizar_informacion.triggered.connect(self._show_find_client_window)
         self.actionEliminar_Cliente.triggered.connect(self._show_delete_client_window)
+        
         self.actionNuevo_Trabajo.triggered.connect(self._show_new_work_window)
+   
     
+
     def _show_new_work_window(self):
         self.new_work = newWorkWindow()
         self.new_work.show()

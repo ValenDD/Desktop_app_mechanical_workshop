@@ -12,5 +12,10 @@ class WorkDAO:
             )
             self.conn.commit()
     
+    def list(self):
+        with self.conn.cursor() as cursor:
+            cursor.execute("SELECT * FROM trabajos")
+            return cursor.fetchall()
+    
     def close_conection(self):
         self.conn.close()

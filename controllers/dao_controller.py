@@ -77,4 +77,8 @@ class DAOcontroller:
         work_dao.save(work)
         work_dao.close_conection()
 
-
+    def listWorks(self):
+        work_dao = WorkDAO(self.set_dbconfig())
+        works = work_dao.list()
+        work_dao.close_conection()
+        return works

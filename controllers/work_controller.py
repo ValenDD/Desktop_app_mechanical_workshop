@@ -25,3 +25,7 @@ class WorkController:
             work_dao.saveWork(new_work)
         except exceptions.ClientNotExistException as e:
             raise exceptions.ClientNotExistException(e)
+        
+    def list_works(self):
+        work_dao = self.factory.get_controller('DAOcontroller')
+        return work_dao.listWorks()

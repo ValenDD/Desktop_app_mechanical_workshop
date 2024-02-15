@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>847</width>
+    <height>258</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="0" column="0">
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="0">
+      <widget class="QTableWidget" name="tableWidget">
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <property name="alternatingRowColors">
+        <bool>true</bool>
+       </property>
+       <property name="sortingEnabled">
+        <bool>true</bool>
+       </property>
+       <attribute name="horizontalHeaderCascadingSectionResizes">
+        <bool>true</bool>
+       </attribute>
+       <attribute name="horizontalHeaderDefaultSectionSize">
+        <number>114</number>
+       </attribute>
+       <column>
+        <property name="text">
+         <string>Nombre Cliente</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Vehiculo</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Fecha Ingreso</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Nueva columna</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Diagnostico</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Reparacion</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Costo de repuestos</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Costo mano de obra</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Costo total</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Metodo de pago</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Saldada</string>
+        </property>
+       </column>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QWidget
+from PySide6.QtWidgets import QWidget, QHeaderView
 from views.clientView import clientListWindowUI
 from PySide6.QtGui import QIcon
 from utils.Factory import Factory
@@ -19,7 +19,13 @@ class clientListWindow(QWidget, clientListWindowUI.Ui_Form):
             font-weight: bold;
         }
         """)
+        for column in range(3):
+            self.Table.resizeColumnToContents(column)
 
+        header = self.Table.horizontalHeader()
+        header.setSectionResizeMode(QHeaderView.Stretch)
+
+        
         self.factory = Factory()
         self.client_controller = self.factory.get_controller('clientController')
         clients = self.client_controller.list_clients()

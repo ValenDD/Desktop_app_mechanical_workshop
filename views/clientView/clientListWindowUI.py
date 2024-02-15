@@ -22,7 +22,7 @@ class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(535, 247)
+        Form.resize(496, 255)
         self.gridLayout_2 = QGridLayout(Form)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
         self.gridLayout = QGridLayout()
@@ -44,7 +44,7 @@ class Ui_Form(object):
         self.Table.setSortingEnabled(True)
         self.Table.setColumnCount(2)
         self.Table.horizontalHeader().setDefaultSectionSize(237)
-        self.Table.horizontalHeader().setStretchLastSection(True)
+        self.Table.horizontalHeader().setStretchLastSection(False)
 
         self.gridLayout.addWidget(self.Table, 0, 0, 1, 1)
 
