@@ -77,8 +77,6 @@
     <addaction name="separator"/>
     <addaction name="actionHistorial_de_trabajos_mensuales"/>
     <addaction name="separator"/>
-    <addaction name="actionBuscar_Trabajo"/>
-    <addaction name="separator"/>
     <addaction name="actionTrabajos_sin_saldar"/>
     <addaction name="separator"/>
    </widget>

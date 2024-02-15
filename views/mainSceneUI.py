@@ -108,8 +108,6 @@ class Ui_MainWindow(object):
         self.menuMenu_Trabajos.addSeparator()
         self.menuMenu_Trabajos.addAction(self.actionHistorial_de_trabajos_mensuales)
         self.menuMenu_Trabajos.addSeparator()
-        self.menuMenu_Trabajos.addAction(self.actionBuscar_Trabajo)
-        self.menuMenu_Trabajos.addSeparator()
         self.menuMenu_Trabajos.addAction(self.actionTrabajos_sin_saldar)
         self.menuMenu_Trabajos.addSeparator()
 
