@@ -130,22 +130,15 @@
      </item>
      <item>
       <layout class="QGridLayout" name="gridLayout">
-       <item row="8" column="1">
-        <widget class="QTextEdit" name="textEdit_3"/>
-       </item>
-       <item row="9" column="1">
-        <widget class="QCheckBox" name="checkBox">
-         <property name="text">
-          <string>Saldada</string>
-         </property>
-        </widget>
-       </item>
        <item row="7" column="0">
         <widget class="QLabel" name="label_5">
          <property name="text">
           <string>Reparaciones</string>
          </property>
         </widget>
+       </item>
+       <item row="8" column="1">
+        <widget class="QTextEdit" name="textEdit_3"/>
        </item>
        <item row="3" column="1">
         <widget class="QDateEdit" name="dateEdit_2">
@@ -157,6 +150,13 @@
        <item row="6" column="1">
         <widget class="QTextEdit" name="textEdit"/>
        </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_10">
+         <property name="text">
+          <string>Fecha Entrada</string>
+         </property>
+        </widget>
+       </item>
        <item row="8" column="0">
         <widget class="QLabel" name="label_9">
          <property name="text">
@@ -164,10 +164,10 @@
          </property>
         </widget>
        </item>
-       <item row="3" column="0">
-        <widget class="QLabel" name="label_10">
+       <item row="6" column="0">
+        <widget class="QLabel" name="label_4">
          <property name="text">
-          <string>Fecha Entrada</string>
+          <string>Diagnostico</string>
          </property>
         </widget>
        </item>
@@ -178,16 +178,23 @@
          </property>
         </widget>
        </item>
+       <item row="9" column="1">
+        <widget class="QCheckBox" name="checkBox">
+         <property name="text">
+          <string>Saldada</string>
+         </property>
+        </widget>
+       </item>
        <item row="4" column="1">
         <widget class="QDateEdit" name="dateEdit"/>
        </item>
        <item row="7" column="1">
         <widget class="QTextEdit" name="textEdit_2"/>
        </item>
-       <item row="6" column="0">
-        <widget class="QLabel" name="label_4">
+       <item row="4" column="2">
+        <widget class="QCheckBox" name="checkBox_2">
          <property name="text">
-          <string>Diagnostico</string>
+          <string>Egresa Hoy?</string>
          </property>
         </widget>
        </item>
@@ -256,7 +263,7 @@
         <bool>true</bool>
        </property>
        <attribute name="horizontalHeaderDefaultSectionSize">
-        <number>115</number>
+        <number>120</number>
        </attribute>
        <column>
         <property name="text">

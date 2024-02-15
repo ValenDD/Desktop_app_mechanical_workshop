@@ -113,20 +113,15 @@ class Ui_Form(object):
 
         self.gridLayout = QGridLayout()
         self.gridLayout.setObjectName(u"gridLayout")
-        self.textEdit_3 = QTextEdit(Form)
-        self.textEdit_3.setObjectName(u"textEdit_3")
-
-        self.gridLayout.addWidget(self.textEdit_3, 8, 1, 1, 1)
-
-        self.checkBox = QCheckBox(Form)
-        self.checkBox.setObjectName(u"checkBox")
-
-        self.gridLayout.addWidget(self.checkBox, 9, 1, 1, 1)
-
         self.label_5 = QLabel(Form)
         self.label_5.setObjectName(u"label_5")
 
         self.gridLayout.addWidget(self.label_5, 7, 0, 1, 1)
+
+        self.textEdit_3 = QTextEdit(Form)
+        self.textEdit_3.setObjectName(u"textEdit_3")
+
+        self.gridLayout.addWidget(self.textEdit_3, 8, 1, 1, 1)
 
         self.dateEdit_2 = QDateEdit(Form)
         self.dateEdit_2.setObjectName(u"dateEdit_2")
@@ -139,20 +134,30 @@ class Ui_Form(object):
 
         self.gridLayout.addWidget(self.textEdit, 6, 1, 1, 1)
 
-        self.label_9 = QLabel(Form)
-        self.label_9.setObjectName(u"label_9")
-
-        self.gridLayout.addWidget(self.label_9, 8, 0, 1, 1)
-
         self.label_10 = QLabel(Form)
         self.label_10.setObjectName(u"label_10")
 
         self.gridLayout.addWidget(self.label_10, 3, 0, 1, 1)
 
+        self.label_9 = QLabel(Form)
+        self.label_9.setObjectName(u"label_9")
+
+        self.gridLayout.addWidget(self.label_9, 8, 0, 1, 1)
+
+        self.label_4 = QLabel(Form)
+        self.label_4.setObjectName(u"label_4")
+
+        self.gridLayout.addWidget(self.label_4, 6, 0, 1, 1)
+
         self.label = QLabel(Form)
         self.label.setObjectName(u"label")
 
         self.gridLayout.addWidget(self.label, 4, 0, 1, 1)
+
+        self.checkBox = QCheckBox(Form)
+        self.checkBox.setObjectName(u"checkBox")
+
+        self.gridLayout.addWidget(self.checkBox, 9, 1, 1, 1)
 
         self.dateEdit = QDateEdit(Form)
         self.dateEdit.setObjectName(u"dateEdit")
@@ -164,10 +169,10 @@ class Ui_Form(object):
 
         self.gridLayout.addWidget(self.textEdit_2, 7, 1, 1, 1)
 
-        self.label_4 = QLabel(Form)
-        self.label_4.setObjectName(u"label_4")
+        self.checkBox_2 = QCheckBox(Form)
+        self.checkBox_2.setObjectName(u"checkBox_2")
 
-        self.gridLayout.addWidget(self.label_4, 6, 0, 1, 1)
+        self.gridLayout.addWidget(self.checkBox_2, 4, 2, 1, 1)
 
 
         self.horizontalLayout.addLayout(self.gridLayout)
@@ -234,7 +239,7 @@ class Ui_Form(object):
         self.tableWidget.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
         self.tableWidget.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
         self.tableWidget.setSortingEnabled(True)
-        self.tableWidget.horizontalHeader().setDefaultSectionSize(115)
+        self.tableWidget.horizontalHeader().setDefaultSectionSize(120)
 
         self.gridLayout_6.addWidget(self.tableWidget, 0, 0, 1, 1)
 
@@ -256,12 +261,13 @@ class Ui_Form(object):
         self.label_8.setText(QCoreApplication.translate("Form", u"Costo Total", None))
         self.label_6.setText(QCoreApplication.translate("Form", u"Costo Repuestos", None))
         self.label_2.setText(QCoreApplication.translate("Form", u"Nombre Cliente", None))
-        self.checkBox.setText(QCoreApplication.translate("Form", u"Saldada", None))
         self.label_5.setText(QCoreApplication.translate("Form", u"Reparaciones", None))
-        self.label_9.setText(QCoreApplication.translate("Form", u"Metodo de Pago", None))
         self.label_10.setText(QCoreApplication.translate("Form", u"Fecha Entrada", None))
-        self.label.setText(QCoreApplication.translate("Form", u"Fecha Egreso", None))
+        self.label_9.setText(QCoreApplication.translate("Form", u"Metodo de Pago", None))
         self.label_4.setText(QCoreApplication.translate("Form", u"Diagnostico", None))
+        self.label.setText(QCoreApplication.translate("Form", u"Fecha Egreso", None))
+        self.checkBox.setText(QCoreApplication.translate("Form", u"Saldada", None))
+        self.checkBox_2.setText(QCoreApplication.translate("Form", u"Egresa Hoy?", None))
         self.label_11.setText(QCoreApplication.translate("Form", u"Nombre", None))
         self.pushButton.setText(QCoreApplication.translate("Form", u"Buscar", None))
         ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)

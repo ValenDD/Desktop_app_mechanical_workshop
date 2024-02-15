@@ -58,7 +58,7 @@ class Ui_Form(object):
         self.tableWidget.setSortingEnabled(True)
         self.tableWidget.setWordWrap(False)
         self.tableWidget.horizontalHeader().setCascadingSectionResizes(True)
-        self.tableWidget.horizontalHeader().setDefaultSectionSize(115)
+        self.tableWidget.horizontalHeader().setDefaultSectionSize(120)
 
         self.gridLayout.addWidget(self.tableWidget, 0, 0, 1, 1)
 

@@ -39,7 +39,7 @@ def create_tables_if_not_exist():
                     Costo_repuestos DECIMAL(10, 2),
                     Costo_reparacion DECIMAL(10, 2),
                     Precio_total DECIMAL(10, 2),
-                    Metodo_de_pago VARCHAR(100),
+                    Metodo_de_pago TEXT,
                     Terminado BOOLEAN,
                     FOREIGN KEY (client_id) REFERENCES clientes(id)
                 )

@@ -29,9 +29,7 @@ class historialWorksWindow(QWidget, historialWorksUI.Ui_Form):
         works = self.work_controller.list_works()
         self._add_works_to_table(works)
 
-        header = self.tableWidget.horizontalHeader()
-        header.setSectionResizeMode(QHeaderView.Stretch) 
-        self.tableWidget.resizeRowsToContents()
+
         
     def _add_works_to_table(self, works):
         self.tableWidget.setRowCount(len(works))
