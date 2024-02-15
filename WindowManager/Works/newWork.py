@@ -3,7 +3,8 @@ from views.workView import newWorkUI
 from PySide6.QtGui import QIcon
 from utils.Factory import Factory
 from WindowManager.error import errorWindow
-from exceptions import exceptions
+from WindowManager.notice import noticeWindow
+from exceptions import ClientExceptions
 
 class newWorkWindow(QWidget, newWorkUI.Ui_Form):
     def __init__(self):
@@ -44,11 +45,11 @@ class newWorkWindow(QWidget, newWorkUI.Ui_Form):
         try:
             self.work_controller = self.factory.get_controller('workController')
             self.work_controller.create_work(date_in, date_out, client_name, vehicle, diagnosis, repair, spare_part_cost, repair_cost, total_price, payment_method, done)
-            self.error = errorWindow()
+            self.error = noticeWindow()
             self.error.ErrorLabel.setText("El trabajo se ha creado exitosamente")
             self.error.show()
             self.close()
-        except exceptions.ClientNotExistException as e:
+        except ClientExceptions.ClientNotExistException as e:
             self.error = errorWindow()
             self.error.ErrorLabel.setText(str(e))
             self.error.show()
@@ -58,7 +59,6 @@ class newWorkWindow(QWidget, newWorkUI.Ui_Form):
             self.error.show()
             
     def _convert_to_numeric(self, value):
-        # Intenta convertir el valor a un número flotante, si falla retorna None
         try:
             return float(value) if value else None
         except ValueError:

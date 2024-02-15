@@ -1,6 +1,6 @@
 from models import client
-from exceptions.exceptions import ClientExistException
-from exceptions.exceptions import ClientNotExistException
+from exceptions.ClientExceptions import ClientExistException
+from exceptions.ClientExceptions import ClientNotExistException
 class ClientController:
     _instance = None
     _factory = None

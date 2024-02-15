@@ -4,7 +4,8 @@ from utils.Factory import Factory
 from views.clientView import findDeleteClientWindowUI
 from utils.Factory import Factory
 from WindowManager.error import errorWindow
-from exceptions import exceptions
+from WindowManager.notice import noticeWindow
+from exceptions import ClientExceptions
 
 
 class findDeleteClientWindow(QWidget, findDeleteClientWindowUI.Ui_Form):
@@ -27,11 +28,11 @@ class findDeleteClientWindow(QWidget, findDeleteClientWindowUI.Ui_Form):
         client_name = self.lista_clientes.currentText()
         try:
             self.client_controller.delete_client(client_name)
-            self.error = errorWindow()
+            self.error = noticeWindow()
             self.error.ErrorLabel.setText("Cliente eliminado con éxito")
             self.error.show()
             self._close_window()
-        except exceptions.ClientNotExistException as e:
+        except ClientExceptions.ClientNotExistException as e:
             self.error = errorWindow()
             self.error.ErrorLabel.setText(str(e))
             self.error.show()

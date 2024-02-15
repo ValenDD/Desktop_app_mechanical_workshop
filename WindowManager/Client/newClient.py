@@ -3,7 +3,8 @@ from views.clientView import newClientUI
 from PySide6.QtGui import QIcon
 from utils.Factory import Factory
 from WindowManager.error import errorWindow
-from exceptions import exceptions
+from WindowManager.notice import noticeWindow
+from exceptions import ClientExceptions
 
 class newClientWindow(QWidget, newClientUI.Ui_Form):
     def __init__(self):
@@ -44,11 +45,11 @@ class newClientWindow(QWidget, newClientUI.Ui_Form):
         self.client_controller = self.factory.get_controller("clientController")
         try:
             self.client_controller.create_user(Nombre_completo, Telefono)
-            self.error = errorWindow()
+            self.error = noticeWindow()
             self.error.ErrorLabel.setText("Cliente creado con éxito")
             self.error.show()
             self.close_window()
-        except exceptions.ClientExistException as e:
+        except ClientExceptions.ClientExistException as e:
             self.error = errorWindow()
             self.error.ErrorLabel.setText(str(e))
             self.error.show()

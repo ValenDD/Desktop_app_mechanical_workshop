@@ -94,3 +94,8 @@ class DAOcontroller:
         works = work_dao.search_works(client_name)
         work_dao.close_conection()
         return works
+    
+    def updateWork(self, work_id, date_in, date_out, client_id, client_name, vehicle, diagnosis, repair, spare_part_cost, repair_cost, total_price, payment_method, done):
+        work_dao = WorkDAO(self.set_dbconfig())
+        work_dao.update(work_id, date_in, date_out, client_id, client_name, vehicle, diagnosis, repair, spare_part_cost, repair_cost, total_price, payment_method, done)
+        work_dao.close_conection()

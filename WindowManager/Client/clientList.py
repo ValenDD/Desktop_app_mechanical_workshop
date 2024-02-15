@@ -22,9 +22,6 @@ class clientListWindow(QWidget, clientListWindowUI.Ui_Form):
         for column in range(3):
             self.Table.resizeColumnToContents(column)
 
-        
-
-        
         self.factory = Factory()
         self.client_controller = self.factory.get_controller('clientController')
         clients = self.client_controller.list_clients()

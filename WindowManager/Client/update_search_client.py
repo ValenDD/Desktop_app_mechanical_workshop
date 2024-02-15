@@ -2,7 +2,8 @@ from PySide6.QtWidgets import QWidget
 from views.clientView import updateClientUI
 from PySide6.QtGui import QIcon
 from WindowManager.error import errorWindow
-from exceptions import exceptions
+from WindowManager.notice import noticeWindow
+from exceptions import ClientExceptions
 from utils.Factory import Factory
 
 class updateSearchClient(QWidget, updateClientUI.Ui_Form):
@@ -77,11 +78,11 @@ class updateSearchClient(QWidget, updateClientUI.Ui_Form):
         
         try:
             self.client_controller.update_client_name(self.comboBox.currentText(), self.lineEdit.text().strip(), self.lineEdit_2.text().strip())
-            self.error = errorWindow()
+            self.error = noticeWindow()
             self.error.ErrorLabel.setText("Cliente actualizado correctamente")
             self.error.show()
             self.close()
-        except exceptions.ClientNotExistException as e:
+        except ClientExceptions.ClientNotExistException as e:
             self.error = errorWindow()
             self.error.ErrorLabel.setText(str(e))
             self.error.show()

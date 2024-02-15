@@ -2,7 +2,7 @@ from PySide6.QtWidgets import QWidget
 from views.clientView import ClientesEntontradosUI
 from PySide6.QtGui import QIcon
 from WindowManager.error import errorWindow
-from exceptions import exceptions
+from exceptions import ClientExceptions
 
 class findedClientWindow(QWidget, ClientesEntontradosUI.Ui_Form):
     def __init__(self, clients):
@@ -17,7 +17,7 @@ class findedClientWindow(QWidget, ClientesEntontradosUI.Ui_Form):
         try:
             self.lineEdit.setText(self.clients[0][1])
             self.lineEdit_2.setText(self.clients[0][2])
-        except exceptions.ClientNotExistException as e:
+        except ClientExceptions.ClientNotExistException as e:
             self.error = errorWindow()
             self.error.ErrorLabel.setText(str(e))
             self.error.show()

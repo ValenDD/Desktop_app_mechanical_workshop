@@ -22,5 +22,13 @@ class WorkDAO:
             cursor.execute("SELECT * FROM trabajos WHERE Nombre_cliente = %s", (client_name,))
             return cursor.fetchall()
     
+    def update(self, work_id, date_in, date_out, client_id, client_name, vehicle, diagnosis, repair, spare_part_cost, repair_cost, total_price, payment_method, done):
+        with self.conn.cursor() as cursor:
+            cursor.execute(
+                "UPDATE trabajos SET client_id = %s, Fecha_ingreso = %s, Fecha_egreso = %s, Nombre_cliente = %s, Vehiculo = %s, Diagnostico = %s, Reparacion = %s, Costo_repuestos = %s, Costo_reparacion = %s, Precio_total = %s, Metodo_de_pago = %s, Terminado = %s WHERE id_trabajo = %s",
+                (client_id, date_in, date_out, client_name, vehicle, diagnosis, repair, spare_part_cost, repair_cost, total_price, payment_method, done, work_id)
+            )
+            self.conn.commit()
+    
     def close_conection(self):
         self.conn.close()
