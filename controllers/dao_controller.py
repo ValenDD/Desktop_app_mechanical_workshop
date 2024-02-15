@@ -1,15 +1,17 @@
 from dao.clientDAO import ClientDAO
+from dao.workDAO import WorkDAO
 from dotenv import load_dotenv
 import os
 
-class ClientDAO_Controller:
+class DAOcontroller:
     _instance = None
     _factory = None
     dbconfig = {}
 
+#Settings
     def __new__(cls, *args, **kwargs):
         if not cls._instance:
-            cls._instance = super(ClientDAO_Controller, cls).__new__(cls)
+            cls._instance = super(DAOcontroller, cls).__new__(cls)
         return cls._instance
 
     def __init__(self):
@@ -17,12 +19,7 @@ class ClientDAO_Controller:
         if not hasattr(self, 'is_initialized'):
             self.is_initialized = True
             self.factory = Factory()
-
-    def saveClient(self, client):
-        client_dao = ClientDAO(self.set_dbconfig())
-        client_dao.save(client)
-        client_dao.close_conection()
-
+    
     def set_dbconfig(dbconfig):
         load_dotenv()
         dbconfig = {
@@ -33,6 +30,12 @@ class ClientDAO_Controller:
             'port': os.getenv('DB_PORT')
         }
         return dbconfig
+            
+#ClientDAO
+    def saveClient(self, client):
+        client_dao = ClientDAO(self.set_dbconfig())
+        client_dao.save(client)
+        client_dao.close_conection()
     
     def listClients(self):
         client_dao = ClientDAO(self.set_dbconfig())
@@ -67,3 +70,11 @@ class ClientDAO_Controller:
         client_dao = ClientDAO(self.set_dbconfig())
         client_dao.delete(name)
         client_dao.close_conection()
+        
+#WorkDAO
+    def saveWork(self, work):
+        work_dao = WorkDAO(self.set_dbconfig())
+        work_dao.save(work)
+        work_dao.close_conection()
+
+

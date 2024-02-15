@@ -19,25 +19,25 @@ class ClientController:
     def create_user(self, name, phone):
         if not self.client_exists(name):
             new_client = client.Client(name, phone)
-            client_dao = self.factory.get_controller('clientDAO')
+            client_dao = self.factory.get_controller('DAOcontroller')
             client_dao.saveClient(new_client)
         else:
             raise ClientExistException("El cliente ya existe")
             
     def list_clients(self):
-        client_dao = self.factory.get_controller('clientDAO')
+        client_dao = self.factory.get_controller('DAOcontroller')
         return client_dao.listClients()
     
     def list_client_only_name(self):
-        client_dao = self.factory.get_controller('clientDAO')
+        client_dao = self.factory.get_controller('DAOcontroller')
         return client_dao.listClientOnlyName()
         
     def client_exists(self, name):
-        client_dao = self.factory.get_controller('clientDAO')
+        client_dao = self.factory.get_controller('DAOcontroller')
         return client_dao.clientExists(name)
 
     def find_users(self, name):
-        client_dao = self.factory.get_controller('clientDAO')
+        client_dao = self.factory.get_controller('DAOcontroller')
         if client_dao.findClients(name):
             return client_dao.findClients(name)
         else:
@@ -45,14 +45,14 @@ class ClientController:
         
     def update_client_name(self, name, new_name, new_phone):
         if self.client_exists(name):
-            client_dao = self.factory.get_controller('clientDAO')
+            client_dao = self.factory.get_controller('DAOcontroller')
             client_dao.updateClientName(name, new_name, new_phone)
         else:
             raise ClientNotExistException("El cliente no existe")
     
     def delete_client(self, name):
         if self.client_exists(name):
-            client_dao = self.factory.get_controller('clientDAO')
+            client_dao = self.factory.get_controller('DAOcontroller')
             client_dao.deleteClient(name)
         else:
             raise ClientNotExistException("El cliente no existe")

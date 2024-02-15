@@ -75,6 +75,8 @@
     <addaction name="separator"/>
     <addaction name="actionHistorial_de_trabajos"/>
     <addaction name="separator"/>
+    <addaction name="actionHistorial_de_trabajos_mensuales"/>
+    <addaction name="separator"/>
     <addaction name="actionBuscar_Trabajo"/>
     <addaction name="separator"/>
    </widget>
@@ -146,6 +148,11 @@
   <action name="actionCalcular_gastos">
    <property name="text">
     <string>Calcular gastos</string>
+   </property>
+  </action>
+  <action name="actionHistorial_de_trabajos_mensuales">
+   <property name="text">
+    <string>Historial de trabajos mensuales</string>
    </property>
   </action>
  </widget>

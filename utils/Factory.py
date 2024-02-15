@@ -1,12 +1,13 @@
 from controllers import client_controller
-from controllers import client_dao_controller
-
+from controllers import dao_controller
+from controllers import work_controller
 class Factory:
     _instance = None
     _controllers = {}
     _controller_classes = {
         'clientController': client_controller.ClientController,
-        'clientDAO': client_dao_controller.ClientDAO_Controller
+        'DAOcontroller': dao_controller.DAOcontroller,
+        'workController': work_controller.WorkController,
     }
 
     def __new__(cls, *args, **kwargs):

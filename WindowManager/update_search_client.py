@@ -80,6 +80,7 @@ class updateSearchClient(QWidget, updateClientUI.Ui_Form):
             self.error = errorWindow()
             self.error.ErrorLabel.setText("Cliente actualizado correctamente")
             self.error.show()
+            self.close()
         except exceptions.ClientNotExistException as e:
             self.error = errorWindow()
             self.error.ErrorLabel.setText(str(e))

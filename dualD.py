@@ -8,7 +8,9 @@ from views.clientView import *
 from WindowManager.clientList import clientListWindow
 from WindowManager.update_search_client import updateSearchClient
 from WindowManager.findDeleteClient import findDeleteClientWindow
-from utils import table_creation
+from WindowManager.newWork import newWorkWindow
+from utils import client_table_creation
+from utils import work_table_creation
 from utils import dbconection
 from PySide6.QtGui import QIcon, QPixmap
 
@@ -27,12 +29,18 @@ class MainWindow(QMainWindow, mainSceneUI.Ui_MainWindow):
         host = os.getenv('DB_HOST') 
         port = os.getenv('DB_PORT') 
         dbconection.create_database_if_not_exists(dbname, user, password, host, port)
-        table_creation.create_tables_if_not_exist()
+        client_table_creation.create_tables_if_not_exist()
+        work_table_creation.create_tables_if_not_exist()
 
         self.actionNuevo_Cliente.triggered.connect(self._show_new_client_windows)
         self.actionListar_todos_los_Clientes.triggered.connect(self._show_client_list)
         self.actionActualizar_informacion.triggered.connect(self._show_find_client_window)
         self.actionEliminar_Cliente.triggered.connect(self._show_delete_client_window)
+        self.actionNuevo_Trabajo.triggered.connect(self._show_new_work_window)
+    
+    def _show_new_work_window(self):
+        self.new_work = newWorkWindow()
+        self.new_work.show()
     
     def _show_delete_client_window(self):
         self.findDelete_client = findDeleteClientWindow()
