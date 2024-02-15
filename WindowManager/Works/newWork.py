@@ -11,22 +11,25 @@ class newWorkWindow(QWidget, newWorkUI.Ui_Form):
         self.setupUi(self)
         self.setWindowIcon(QIcon('./assets/icono-windows.png'))
         self.setWindowTitle("DualD - Nuevo Trabajo")
-        
+        self.dateEdit.setEnabled(False) 
         self.Aceptar_button.clicked.connect(self._create_work)
         self.Cancelar_button.clicked.connect(self._close_window)
+        self.checkBox_2.stateChanged.connect(self._show_date_out)
         
     def _create_work(self):
         self.factory = Factory()
         self.client_controller = self.factory.get_controller('clientController')
-        
+        date_out = None
+        if self.checkBox_2.isChecked():
+            date_out = self.dateEdit.text()
         client_name = self.lineEdit.text().strip()
         vehicle = self.lineEdit_2.text().strip()
         spare_part_cost = self._convert_to_numeric(self.lineEdit_3.text().strip())
         repair_cost = self._convert_to_numeric(self.lineEdit_4.text().strip())
         total_price = self._convert_to_numeric(self.lineEdit_5.text().strip())
-        
         date_in = self.dateEdit_2.text()
-        date_out = self.dateEdit.text()
+        
+            
         diagnosis = self.textEdit.toPlainText().strip()
         repair = self.textEdit_2.toPlainText().strip()
         payment_method = self.textEdit_3.toPlainText().strip()
@@ -63,6 +66,12 @@ class newWorkWindow(QWidget, newWorkUI.Ui_Form):
             self.error.ErrorLabel.setText("Los campos de costo deben ser números válidos")
             self.error.show()
             return None
+            
+    def _show_date_out(self, state):
+        if state == 2:
+            self.dateEdit.setEnabled(True)
+        else:
+            self.dateEdit.setEnabled(False)   
             
     def _close_window(self):
         self.close()

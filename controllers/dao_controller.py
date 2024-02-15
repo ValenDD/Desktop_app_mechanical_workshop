@@ -66,19 +66,31 @@ class DAOcontroller:
         client_dao.update(name, new_name, new_phone)
         client_dao.close_conection()
     
+    def client_id(self, name):
+        client_dao = ClientDAO(self.set_dbconfig())
+        client = client_dao.client_id(name)
+        client_dao.close_conection()
+        return client
+    
     def deleteClient(self, name):
         client_dao = ClientDAO(self.set_dbconfig())
         client_dao.delete(name)
         client_dao.close_conection()
         
 #WorkDAO
-    def saveWork(self, work):
+    def saveWork(self, client_it, work):
         work_dao = WorkDAO(self.set_dbconfig())
-        work_dao.save(work)
+        work_dao.save(client_it, work)
         work_dao.close_conection()
 
     def listWorks(self):
         work_dao = WorkDAO(self.set_dbconfig())
         works = work_dao.list()
+        work_dao.close_conection()
+        return works
+    
+    def searchClientWorks(self, client_name):
+        work_dao = WorkDAO(self.set_dbconfig())
+        works = work_dao.search_works(client_name)
         work_dao.close_conection()
         return works

@@ -43,6 +43,11 @@ class ClientDAO:
             )
             self.conn.commit() 
     
+    def client_id(self, name):
+        with self.conn.cursor() as cursor:
+            cursor.execute("SELECT id FROM clientes WHERE nombre = %s", (name,))
+            return cursor.fetchone()
+    
     def delete(self, name):
         with self.conn.cursor() as cursor:
             cursor.execute("DELETE FROM clientes WHERE nombre = %s", (name,))

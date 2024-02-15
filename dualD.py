@@ -3,12 +3,14 @@ from dotenv import load_dotenv
 import os
 from PySide6.QtWidgets import QApplication, QMainWindow
 from views import mainSceneUI
-from WindowManager.newClient import newClientWindow
+from WindowManager.Client.newClient import newClientWindow
 from views.clientView import *
-from WindowManager.clientList import clientListWindow
-from WindowManager.update_search_client import updateSearchClient
-from WindowManager.findDeleteClient import findDeleteClientWindow
-from WindowManager.newWork import newWorkWindow
+from WindowManager.Client.clientList import clientListWindow
+from WindowManager.Client.update_search_client import updateSearchClient
+from WindowManager.Client.findDeleteClient import findDeleteClientWindow
+from WindowManager.Works.newWork import newWorkWindow
+from WindowManager.Works.historialWorksAll import historialWorksWindow
+from WindowManager.Works.update_works import updateWorkWindow
 from utils import client_table_creation
 from utils import work_table_creation
 from utils import dbconection
@@ -38,13 +40,23 @@ class MainWindow(QMainWindow, mainSceneUI.Ui_MainWindow):
         self.actionEliminar_Cliente.triggered.connect(self._show_delete_client_window)
         
         self.actionNuevo_Trabajo.triggered.connect(self._show_new_work_window)
-   
+        self.actionHistorial_de_trabajos.triggered.connect(self._show_work_list)
+        self.actionActualizar_informacion_2.triggered.connect(self._show_update_work_window)
     
+    # Work
+    def _show_update_work_window(self):
+        self.update_work = updateWorkWindow()
+        self.update_work.show()
+        
+    def _show_work_list(self):
+        self.historial_works = historialWorksWindow()
+        self.historial_works.show()
 
     def _show_new_work_window(self):
         self.new_work = newWorkWindow()
         self.new_work.show()
     
+    # Client
     def _show_delete_client_window(self):
         self.findDelete_client = findDeleteClientWindow()
         self.findDelete_client.show()

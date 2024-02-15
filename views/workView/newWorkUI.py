@@ -67,27 +67,17 @@ class Ui_Form(object):
         self.lineEdit.setObjectName(u"lineEdit")
 
         self.gridLayout_3.addWidget(self.lineEdit, 0, 1, 1, 1)
-        
+
         self.lineEdit_2 = QLineEdit(Form)
         self.lineEdit_2.setObjectName(u"lineEdit_2")
 
         self.gridLayout_3.addWidget(self.lineEdit_2, 1, 1, 1, 1)
-        
+
         self.lineEdit_3 = QLineEdit(Form)
         self.lineEdit_3.setObjectName(u"lineEdit_3")
 
         self.gridLayout_3.addWidget(self.lineEdit_3, 2, 1, 1, 1)
-
-        self.lineEdit_4 = QLineEdit(Form)
-        self.lineEdit_4.setObjectName(u"lineEdit_4")
-
-        self.gridLayout_3.addWidget(self.lineEdit_4, 3, 1, 1, 1)
-
-        self.lineEdit_5 = QLineEdit(Form)
-        self.lineEdit_5.setObjectName(u"lineEdit_5")
-
-        self.gridLayout_3.addWidget(self.lineEdit_5, 4, 1, 1, 1)
-                
+        
         self.label_3 = QLabel(Form)
         self.label_3.setObjectName(u"label_3")
 
@@ -98,10 +88,21 @@ class Ui_Form(object):
 
         self.gridLayout_3.addWidget(self.label_2, 0, 0, 1, 1)
 
+        self.lineEdit_4 = QLineEdit(Form)
+        self.lineEdit_4.setObjectName(u"lineEdit_4")
+
+        self.gridLayout_3.addWidget(self.lineEdit_4, 3, 1, 1, 1)
+
         self.label_8 = QLabel(Form)
         self.label_8.setObjectName(u"label_8")
 
         self.gridLayout_3.addWidget(self.label_8, 4, 0, 1, 1)
+
+        self.lineEdit_5 = QLineEdit(Form)
+        self.lineEdit_5.setObjectName(u"lineEdit_5")
+
+        self.gridLayout_3.addWidget(self.lineEdit_5, 4, 1, 1, 1)
+
 
         self.horizontalLayout.addLayout(self.gridLayout_3)
 
@@ -112,20 +113,40 @@ class Ui_Form(object):
 
         self.gridLayout.addWidget(self.label_9, 6, 0, 1, 1)
 
-        self.label_4 = QLabel(Form)
-        self.label_4.setObjectName(u"label_4")
+        self.dateEdit_2 = QDateEdit(Form)
+        self.dateEdit_2.setObjectName(u"dateEdit_2")
 
-        self.gridLayout.addWidget(self.label_4, 4, 0, 1, 1)
+        self.gridLayout.addWidget(self.dateEdit_2, 1, 1, 1, 1)
 
+        self.dateEdit = QDateEdit(Form)
+        self.dateEdit.setObjectName(u"dateEdit")
+
+        self.gridLayout.addWidget(self.dateEdit, 2, 1, 1, 1)
+       
+        self.textEdit = QTextEdit(Form)
+        self.textEdit.setObjectName(u"textEdit")
+
+        self.gridLayout.addWidget(self.textEdit, 4, 1, 1, 1)
+        
         self.textEdit_2 = QTextEdit(Form)
         self.textEdit_2.setObjectName(u"textEdit_2")
 
         self.gridLayout.addWidget(self.textEdit_2, 5, 1, 1, 1)
-
+        
         self.textEdit_3 = QTextEdit(Form)
         self.textEdit_3.setObjectName(u"textEdit_3")
 
         self.gridLayout.addWidget(self.textEdit_3, 6, 1, 1, 1)
+
+        self.label_5 = QLabel(Form)
+        self.label_5.setObjectName(u"label_5")
+
+        self.gridLayout.addWidget(self.label_5, 5, 0, 1, 1)
+
+        self.label_10 = QLabel(Form)
+        self.label_10.setObjectName(u"label_10")
+
+        self.gridLayout.addWidget(self.label_10, 1, 0, 1, 1)
 
         self.checkBox = QCheckBox(Form)
         self.checkBox.setObjectName(u"checkBox")
@@ -137,34 +158,22 @@ class Ui_Form(object):
 
         self.gridLayout.addWidget(self.label, 2, 0, 1, 1)
 
-        self.label_5 = QLabel(Form)
-        self.label_5.setObjectName(u"label_5")
+        self.label_4 = QLabel(Form)
+        self.label_4.setObjectName(u"label_4")
 
-        self.gridLayout.addWidget(self.label_5, 5, 0, 1, 1)
+        self.gridLayout.addWidget(self.label_4, 4, 0, 1, 1)
 
-        self.textEdit = QTextEdit(Form)
-        self.textEdit.setObjectName(u"textEdit")
+        self.checkBox_2 = QCheckBox(Form)
+        self.checkBox_2.setObjectName(u"checkBox_2")
 
-        self.gridLayout.addWidget(self.textEdit, 4, 1, 1, 1)
+        self.gridLayout.addWidget(self.checkBox_2, 2, 2, 1, 1)
 
-        self.dateEdit = QDateEdit(Form)
-        self.dateEdit.setObjectName(u"dateEdit")
-
-        self.gridLayout.addWidget(self.dateEdit, 2, 1, 1, 1)
-
-        self.label_10 = QLabel(Form)
-        self.label_10.setObjectName(u"label_10")
-
-        self.gridLayout.addWidget(self.label_10, 1, 0, 1, 1)
-
-        self.dateEdit_2 = QDateEdit(Form)
-        self.dateEdit_2.setObjectName(u"dateEdit_2")
-
-        self.gridLayout.addWidget(self.dateEdit_2, 1, 1, 1, 1)
 
         self.horizontalLayout.addLayout(self.gridLayout)
 
+
         self.gridLayout_2.addLayout(self.horizontalLayout, 0, 0, 1, 1)
+
 
         self.retranslateUi(Form)
 
@@ -181,10 +190,11 @@ class Ui_Form(object):
         self.label_2.setText(QCoreApplication.translate("Form", u"Nombre Cliente", None))
         self.label_8.setText(QCoreApplication.translate("Form", u"Costo Total", None))
         self.label_9.setText(QCoreApplication.translate("Form", u"Metodo de Pago", None))
-        self.label_4.setText(QCoreApplication.translate("Form", u"Diagnostico", None))
-        self.checkBox.setText(QCoreApplication.translate("Form", u"Saldada", None))
-        self.label.setText(QCoreApplication.translate("Form", u"Fecha Egreso", None))
         self.label_5.setText(QCoreApplication.translate("Form", u"Reparaciones", None))
         self.label_10.setText(QCoreApplication.translate("Form", u"Fecha Entrada", None))
+        self.checkBox.setText(QCoreApplication.translate("Form", u"Saldada", None))
+        self.label.setText(QCoreApplication.translate("Form", u"Fecha Egreso", None))
+        self.label_4.setText(QCoreApplication.translate("Form", u"Diagnostico", None))
+        self.checkBox_2.setText(QCoreApplication.translate("Form", u"Egreso Hoy?", None))
     # retranslateUi
 

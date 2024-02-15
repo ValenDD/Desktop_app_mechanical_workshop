@@ -22,10 +22,15 @@ class WorkController:
             client = self.client_controller.find_users(client_name)
             new_work = work.Work(client, date_in, date_out, client_name, vehicle, diagnosis, repair, spare_part_cost, repair_cost, total_price, payment_method, done)
             work_dao = self.factory.get_controller('DAOcontroller')
-            work_dao.saveWork(new_work)
+            client_id = self.client_controller.client_id(client_name)
+            work_dao.saveWork(client_id, new_work)
         except exceptions.ClientNotExistException as e:
             raise exceptions.ClientNotExistException(e)
         
     def list_works(self):
         work_dao = self.factory.get_controller('DAOcontroller')
         return work_dao.listWorks()
+    
+    def search_client_works(self, client_name):
+        work_dao = self.factory.get_controller('DAOcontroller')
+        return work_dao.searchClientWorks(client_name)

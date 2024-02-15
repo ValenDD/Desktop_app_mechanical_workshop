@@ -56,8 +56,9 @@ class Ui_Form(object):
         self.tableWidget.setMouseTracking(True)
         self.tableWidget.setAlternatingRowColors(True)
         self.tableWidget.setSortingEnabled(True)
+        self.tableWidget.setWordWrap(False)
         self.tableWidget.horizontalHeader().setCascadingSectionResizes(True)
-        self.tableWidget.horizontalHeader().setDefaultSectionSize(114)
+        self.tableWidget.horizontalHeader().setDefaultSectionSize(115)
 
         self.gridLayout.addWidget(self.tableWidget, 0, 0, 1, 1)
 
@@ -79,7 +80,7 @@ class Ui_Form(object):
         ___qtablewidgetitem2 = self.tableWidget.horizontalHeaderItem(2)
         ___qtablewidgetitem2.setText(QCoreApplication.translate("Form", u"Fecha Ingreso", None));
         ___qtablewidgetitem3 = self.tableWidget.horizontalHeaderItem(3)
-        ___qtablewidgetitem3.setText(QCoreApplication.translate("Form", u"Nueva columna", None));
+        ___qtablewidgetitem3.setText(QCoreApplication.translate("Form", u"Fecha Egreso", None));
         ___qtablewidgetitem4 = self.tableWidget.horizontalHeaderItem(4)
         ___qtablewidgetitem4.setText(QCoreApplication.translate("Form", u"Diagnostico", None));
         ___qtablewidgetitem5 = self.tableWidget.horizontalHeaderItem(5)

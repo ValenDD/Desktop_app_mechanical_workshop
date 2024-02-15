@@ -22,15 +22,15 @@ class clientListWindow(QWidget, clientListWindowUI.Ui_Form):
         for column in range(3):
             self.Table.resizeColumnToContents(column)
 
-        header = self.Table.horizontalHeader()
-        header.setSectionResizeMode(QHeaderView.Stretch)
+        
 
         
         self.factory = Factory()
         self.client_controller = self.factory.get_controller('clientController')
         clients = self.client_controller.list_clients()
         self.add_client_table(clients)
-
+        header = self.Table.horizontalHeader()
+        header.setSectionResizeMode(QHeaderView.Stretch)
 
     def add_client_table(self, data):
         self.Table.setRowCount(len(data))

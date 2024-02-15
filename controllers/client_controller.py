@@ -38,7 +38,7 @@ class ClientController:
 
     def find_users(self, name):
         client_dao = self.factory.get_controller('DAOcontroller')
-        if client_dao.findClients(name):
+        if client_dao.clientExists(name):
             return client_dao.findClients(name)
         else:
             raise ClientNotExistException("El cliente no existe")
@@ -50,6 +50,10 @@ class ClientController:
         else:
             raise ClientNotExistException("El cliente no existe")
     
+    def client_id(self, name):
+        client_dao = self.factory.get_controller('DAOcontroller')
+        return client_dao.client_id(name)
+        
     def delete_client(self, name):
         if self.client_exists(name):
             client_dao = self.factory.get_controller('DAOcontroller')
