@@ -47,3 +47,8 @@ class WorkDAO:
         with self.conn.cursor() as cursor:
             cursor.execute("DELETE FROM trabajos WHERE client_id = %s", (client_id,))
             self.conn.commit()
+    
+    def list_works_per_month(self, month, year):
+        with self.conn.cursor() as cursor:
+            cursor.execute("SELECT * FROM trabajos WHERE EXTRACT(MONTH FROM Fecha_ingreso) = %s AND EXTRACT(YEAR FROM Fecha_ingreso) = %s", (month, year))
+            return cursor.fetchall()

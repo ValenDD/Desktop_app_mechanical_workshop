@@ -116,3 +116,8 @@ class DAOcontroller:
         work_dao.delete_all_works(client_id)
         work_dao.close_conection()
     
+    def list_works_per_month(self, month, year):
+            work_dao = WorkDAO(self.set_dbconfig())
+            works = work_dao.list_works_per_month(month, year)
+            work_dao.close_conection()
+            return works

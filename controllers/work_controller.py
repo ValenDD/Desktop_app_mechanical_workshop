@@ -57,3 +57,7 @@ class WorkController:
     def delete_all_works(self, client_id):
         work_dao = self.factory.get_controller('DAOcontroller')
         work_dao.delete_all_works(client_id)
+        
+    def list_works_per_month(self, month, year):
+            work_dao = self.factory.get_controller('DAOcontroller')
+            return work_dao.list_works_per_month(month, year)

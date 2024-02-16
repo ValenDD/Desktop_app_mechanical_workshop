@@ -96,8 +96,6 @@ class Ui_MainWindow(object):
         self.menuMenu_Gastos_Ganancias.addSeparator()
         self.menuMenu_Gastos_Ganancias.addAction(self.actionCalcular_ganancias)
         self.menuMenu_Gastos_Ganancias.addSeparator()
-        self.menuMenu_Gastos_Ganancias.addAction(self.actionCalcular_gastos)
-        self.menuMenu_Gastos_Ganancias.addSeparator()
         self.menuMenu_Trabajos.addAction(self.actionNuevo_Trabajo)
         self.menuMenu_Trabajos.addSeparator()
         self.menuMenu_Trabajos.addAction(self.actionActualizar_informacion_2)
@@ -107,8 +105,6 @@ class Ui_MainWindow(object):
         self.menuMenu_Trabajos.addAction(self.actionHistorial_de_trabajos)
         self.menuMenu_Trabajos.addSeparator()
         self.menuMenu_Trabajos.addAction(self.actionHistorial_de_trabajos_mensuales)
-        self.menuMenu_Trabajos.addSeparator()
-        self.menuMenu_Trabajos.addAction(self.actionTrabajos_sin_saldar)
         self.menuMenu_Trabajos.addSeparator()
 
         self.retranslateUi(MainWindow)
@@ -134,8 +130,8 @@ class Ui_MainWindow(object):
         self.actionHistorial_de_trabajos_mensuales.setText(QCoreApplication.translate("MainWindow", u"Historial de trabajos mensuales", None))
         self.actionTrabajos_sin_saldar.setText(QCoreApplication.translate("MainWindow", u"Trabajos sin saldar", None))
         self.label.setText("")
-        self.menuMenu_Clientes.setTitle(QCoreApplication.translate("MainWindow", u"Menu Clientes", None))
-        self.menuMenu_Gastos_Ganancias.setTitle(QCoreApplication.translate("MainWindow", u"Menu Gastos/Ganancias", None))
-        self.menuMenu_Trabajos.setTitle(QCoreApplication.translate("MainWindow", u"Menu Trabajos", None))
+        self.menuMenu_Clientes.setTitle(QCoreApplication.translate("MainWindow", u"Clientes", None))
+        self.menuMenu_Gastos_Ganancias.setTitle(QCoreApplication.translate("MainWindow", u"Gastos/Ganancias", None))
+        self.menuMenu_Trabajos.setTitle(QCoreApplication.translate("MainWindow", u"Trabajos", None))
     # retranslateUi
 

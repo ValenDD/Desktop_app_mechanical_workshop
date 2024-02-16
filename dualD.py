@@ -12,6 +12,7 @@ from WindowManager.Works.newWork import newWorkWindow
 from WindowManager.Works.historialWorksAll import historialWorksWindow
 from WindowManager.Works.deleteWork import deleteWorkWindow
 from WindowManager.Works.update_works import updateWorkWindow
+from WindowManager.Works.worksPerMonth import worksPerMonthWindow
 from utils import client_table_creation
 from utils import work_table_creation
 from utils import dbconection
@@ -44,6 +45,7 @@ class MainWindow(QMainWindow, mainSceneUI.Ui_MainWindow):
         self.actionHistorial_de_trabajos.triggered.connect(self._show_work_list)
         self.actionActualizar_informacion_2.triggered.connect(self._show_update_work_window)
         self.actionEliminar_Trabajo.triggered.connect(self._show_delete_work_window)
+        self.actionHistorial_de_trabajos_mensuales.triggered.connect(self._show_work_list_per_month)
         
     # Work
     def _show_update_work_window(self):
@@ -62,6 +64,9 @@ class MainWindow(QMainWindow, mainSceneUI.Ui_MainWindow):
         self.delete_work = deleteWorkWindow()
         self.delete_work.show()
     
+    def _show_work_list_per_month(self):
+        self.works_per_month = worksPerMonthWindow()
+        self.works_per_month.show()
     # Client
     def _show_delete_client_window(self):
         self.findDelete_client = findDeleteClientWindow()

@@ -255,6 +255,7 @@ class updateWorkWindow(QWidget, updateWorkUI.Ui_Form):
             total_price = self._convert_to_numeric(self.lineEdit_5.text().strip())
             payment_method = self.textEdit_3.toPlainText().strip()
             done = self.checkBox.isChecked()
+            
             if self.checkBox_2.isChecked():
                 date_out = self.dateEdit.date().toString("dd-MM-yyyy")
             else:

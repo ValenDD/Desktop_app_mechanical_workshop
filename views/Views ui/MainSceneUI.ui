@@ -41,7 +41,7 @@
    </property>
    <widget class="QMenu" name="menuMenu_Clientes">
     <property name="title">
-     <string>Menu Clientes</string>
+     <string>Clientes</string>
     </property>
     <addaction name="actionNuevo_Cliente"/>
     <addaction name="separator"/>
@@ -54,18 +54,16 @@
    </widget>
    <widget class="QMenu" name="menuMenu_Gastos_Ganancias">
     <property name="title">
-     <string>Menu Gastos/Ganancias</string>
+     <string>Gastos/Ganancias</string>
     </property>
     <addaction name="actionHistorial_de_Gastos"/>
     <addaction name="separator"/>
     <addaction name="actionCalcular_ganancias"/>
     <addaction name="separator"/>
-    <addaction name="actionCalcular_gastos"/>
-    <addaction name="separator"/>
    </widget>
    <widget class="QMenu" name="menuMenu_Trabajos">
     <property name="title">
-     <string>Menu Trabajos</string>
+     <string>Trabajos</string>
     </property>
     <addaction name="actionNuevo_Trabajo"/>
     <addaction name="separator"/>
@@ -76,8 +74,6 @@
     <addaction name="actionHistorial_de_trabajos"/>
     <addaction name="separator"/>
     <addaction name="actionHistorial_de_trabajos_mensuales"/>
-    <addaction name="separator"/>
-    <addaction name="actionTrabajos_sin_saldar"/>
     <addaction name="separator"/>
    </widget>
    <addaction name="menuMenu_Clientes"/>
