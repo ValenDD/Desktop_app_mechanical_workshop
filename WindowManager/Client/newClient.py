@@ -28,6 +28,12 @@ class newClientWindow(QWidget, newClientUI.Ui_Form):
             self.error.show()
             return
         
+        if Nombre.isnumeric() == True or Apellido.isnumeric() == True:
+            self.error = errorWindow()
+            self.error.ErrorLabel.setText("El nombre y apellido no pueden ser números")
+            self.error.show()
+            return
+        
         if Telefono.isnumeric() == False:
             self.error = errorWindow()
             self.error.ErrorLabel.setText("El teléfono debe ser un número")

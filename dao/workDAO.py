@@ -32,3 +32,18 @@ class WorkDAO:
     
     def close_conection(self):
         self.conn.close()
+        
+    def work_id(self, client_name):
+        with self.conn.cursor() as cursor:
+            cursor.execute("SELECT id_trabajo FROM trabajos WHERE Nombre_cliente = %s", (client_name,))
+            return cursor.fetchone()
+    
+    def delete(self, work_id):
+        with self.conn.cursor() as cursor:
+            cursor.execute("DELETE FROM trabajos WHERE id_trabajo = %s", (work_id,))
+            self.conn.commit()
+            
+    def delete_all_works(self, client_id):
+        with self.conn.cursor() as cursor:
+            cursor.execute("DELETE FROM trabajos WHERE client_id = %s", (client_id,))
+            self.conn.commit()

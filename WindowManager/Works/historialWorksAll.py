@@ -46,6 +46,10 @@ class historialWorksWindow(QWidget, historialWorksUI.Ui_Form):
             self.tableWidget.setItem(i, 9, historialWorksUI.QTableWidgetItem(str(works[i][11])))
             self.tableWidget.setItem(i, 10, historialWorksUI.QTableWidgetItem(str(works[i][12])))
             
+        header = self.tableWidget.horizontalHeader() 
+        header.setMinimumSectionSize(117)
+        header.setSectionResizeMode(QHeaderView.Stretch)
+            
             
             
             

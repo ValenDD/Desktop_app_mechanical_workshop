@@ -35,3 +35,4 @@ class clientListWindow(QWidget, clientListWindowUI.Ui_Form):
             self.Table.setItem(i, 0, clientListWindowUI.QTableWidgetItem(data[i][1]))
             self.Table.setItem(i, 1, clientListWindowUI.QTableWidgetItem(data[i][2]))
         
+        

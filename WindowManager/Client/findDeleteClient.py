@@ -27,6 +27,8 @@ class findDeleteClientWindow(QWidget, findDeleteClientWindowUI.Ui_Form):
     def _delete_client(self):
         client_name = self.lista_clientes.currentText()
         try:
+            self.work_controller = self.factory.get_controller('workController')
+            self.work_controller.delete_all_works(self.client_controller.client_id(client_name))
             self.client_controller.delete_client(client_name)
             self.error = noticeWindow()
             self.error.ErrorLabel.setText("Cliente eliminado con éxito")

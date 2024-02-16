@@ -17,6 +17,7 @@ class updateWorkWindow(QWidget, updateWorkUI.Ui_Form):
         self.currentCheckBox = None
         self.work_id = None
         self.originalTexts = {}
+        self.client_name = None
         self.hasChanged = False
         self.tableWidget.horizontalHeader().setStyleSheet("""
         QHeaderView::section {
@@ -56,10 +57,14 @@ class updateWorkWindow(QWidget, updateWorkUI.Ui_Form):
         
         self.checkBox_2.stateChanged.connect(self._show_date_out)
         self.pushButton.clicked.connect(self._search_client_works)
+        self.Aceptar_button.clicked.connect(lambda: self._update_work())
+        self.Cancelar_button.clicked.connect(self._clsoe_window)
+        
+        
         
     def _search_client_works(self):
-        client_name = self.lineEdit_6.text().strip()
-        works = self.factory.get_controller('workController').search_client_works(client_name)
+        self.client_name = self.lineEdit_6.text().strip()
+        works = self.factory.get_controller('workController').search_client_works(self.client_name)
         
         self.tableWidget.setRowCount(len(works))
         for i in range(len(works)):
@@ -85,6 +90,9 @@ class updateWorkWindow(QWidget, updateWorkUI.Ui_Form):
             self.tableWidget.setItem(i, 9, updateWorkUI.QTableWidgetItem(str(works[i][11])))
             self.tableWidget.setItem(i, 10, updateWorkUI.QTableWidgetItem(str(works[i][12])))
             
+        header = self.tableWidget.horizontalHeader() 
+        header.setMinimumSectionSize(117)
+        header.setSectionResizeMode(QHeaderView.Stretch)
         self.tableWidget.setVisible(True)
         
         self.lineEdit_6.textChanged.connect(self.resetUI)
@@ -104,7 +112,7 @@ class updateWorkWindow(QWidget, updateWorkUI.Ui_Form):
 
     def _displayRowData(self, row):
         values = []
-        self.work_id = row + 1
+            
         for column in range(1, self.tableWidget.columnCount()):
             item = self.tableWidget.item(row, column)
             if item is not None:
@@ -122,9 +130,13 @@ class updateWorkWindow(QWidget, updateWorkUI.Ui_Form):
         if fechaEgreso.isValid():
             self.dateEdit.setDate(fechaEgreso)
         
-        client_name = self.lineEdit_6.text().strip()
-        self.lineEdit.setText(client_name)
-        self.lineEdit_2.setText(values[0])
+        self.client_name = self.lineEdit_6.text().strip()
+        self.lineEdit.setText(self.client_name)
+        
+        if self.lineEdit_2.setText(values[0]):
+            self.checkBox_2.setChecked(True)
+            self.lineEdit_2.setText(values[0])
+        
         self.lineEdit_3.setText(values[5])
         self.lineEdit_4.setText(values[6])
         self.lineEdit_5.setText(values[7])
@@ -133,7 +145,7 @@ class updateWorkWindow(QWidget, updateWorkUI.Ui_Form):
         self.textEdit_2.setText(values[4])
         self.textEdit_3.setText(values[8])
         
-        self.checkBox.setChecked(values[8].lower() == 'true')
+        self.checkBox.setChecked(values[9] == 'True')
         
         self.originalTexts = {
             'lineEdit_3': self.lineEdit_3.text(),
@@ -147,7 +159,6 @@ class updateWorkWindow(QWidget, updateWorkUI.Ui_Form):
         }
         
         self._see_windows()
-        self.Aceptar_button.clicked.connect(lambda: self._update_work())
         
         
     def _see_windows(self):
@@ -221,6 +232,9 @@ class updateWorkWindow(QWidget, updateWorkUI.Ui_Form):
         self.tableWidget.setVisible(False)
         
     def _update_work(self):
+        self.work_controller = self.factory.get_controller('workController')
+        self.work_id = self.work_controller.work_id(self.client_name)
+        
         hasChanged = (
             self.lineEdit_3.text() != self.originalTexts['lineEdit_3'] or
             self.lineEdit_4.text() != self.originalTexts['lineEdit_4'] or
@@ -232,7 +246,7 @@ class updateWorkWindow(QWidget, updateWorkUI.Ui_Form):
             self.checkBox_2.isChecked() != self.originalTexts['checkBox_2']
         )
         if hasChanged:
-            client_name = self.lineEdit.text().strip()
+            self.client_name = self.lineEdit.text().strip()
             vehicle = self.lineEdit_2.text().strip()
             diagnosis = self.textEdit.toPlainText().strip()
             repair = self.textEdit_2.toPlainText().strip()
@@ -248,7 +262,7 @@ class updateWorkWindow(QWidget, updateWorkUI.Ui_Form):
             date_in = self.dateEdit_2.date().toString("dd-MM-yyyy")
             
             try:
-                self.factory.get_controller('workController').update_work(self.work_id, date_in, date_out, client_name, vehicle, diagnosis, repair, spare_part_cost, repair_cost, total_price, payment_method, done)
+                self.factory.get_controller('workController').update_work(self.work_id , date_in, date_out, self.client_name, vehicle, diagnosis, repair, spare_part_cost, repair_cost, total_price, payment_method, done)
                 self.hideElements()
                 self.resetUI()
                 self.lineEdit_6.clear()
@@ -279,3 +293,10 @@ class updateWorkWindow(QWidget, updateWorkUI.Ui_Form):
             self.dateEdit.setEnabled(True)
         else:
             self.dateEdit.setEnabled(False) 
+    
+    def _clsoe_window(self):
+        self.hideElements()
+        self.resetUI()
+        self.lineEdit_6.clear()
+        self.lineEdit_6.setFocus()
+        self.close()

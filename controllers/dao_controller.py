@@ -99,3 +99,20 @@ class DAOcontroller:
         work_dao = WorkDAO(self.set_dbconfig())
         work_dao.update(work_id, date_in, date_out, client_id, client_name, vehicle, diagnosis, repair, spare_part_cost, repair_cost, total_price, payment_method, done)
         work_dao.close_conection()
+        
+    def work_id(self, client_name):
+        work_dao = WorkDAO(self.set_dbconfig())
+        work = work_dao.work_id(client_name)
+        work_dao.close_conection()
+        return work
+    
+    def deleteWork(self, work_id):
+        work_dao = WorkDAO(self.set_dbconfig())
+        work_dao.delete(work_id)
+        work_dao.close_conection()
+        
+    def delete_all_works(self, client_id):
+        work_dao = WorkDAO(self.set_dbconfig())
+        work_dao.delete_all_works(client_id)
+        work_dao.close_conection()
+    

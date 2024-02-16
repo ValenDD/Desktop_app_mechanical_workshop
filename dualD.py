@@ -10,6 +10,7 @@ from WindowManager.Client.update_search_client import updateSearchClient
 from WindowManager.Client.findDeleteClient import findDeleteClientWindow
 from WindowManager.Works.newWork import newWorkWindow
 from WindowManager.Works.historialWorksAll import historialWorksWindow
+from WindowManager.Works.deleteWork import deleteWorkWindow
 from WindowManager.Works.update_works import updateWorkWindow
 from utils import client_table_creation
 from utils import work_table_creation
@@ -42,7 +43,8 @@ class MainWindow(QMainWindow, mainSceneUI.Ui_MainWindow):
         self.actionNuevo_Trabajo.triggered.connect(self._show_new_work_window)
         self.actionHistorial_de_trabajos.triggered.connect(self._show_work_list)
         self.actionActualizar_informacion_2.triggered.connect(self._show_update_work_window)
-    
+        self.actionEliminar_Trabajo.triggered.connect(self._show_delete_work_window)
+        
     # Work
     def _show_update_work_window(self):
         self.update_work = updateWorkWindow()
@@ -55,6 +57,10 @@ class MainWindow(QMainWindow, mainSceneUI.Ui_MainWindow):
     def _show_new_work_window(self):
         self.new_work = newWorkWindow()
         self.new_work.show()
+    
+    def _show_delete_work_window(self):
+        self.delete_work = deleteWorkWindow()
+        self.delete_work.show()
     
     # Client
     def _show_delete_client_window(self):

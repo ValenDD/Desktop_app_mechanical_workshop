@@ -42,3 +42,18 @@ class WorkController:
             work_dao.updateWork(work_id, date_in, date_out, client_id, client_name, vehicle, diagnosis, repair, spare_part_cost, repair_cost, total_price, payment_method, done)
         except WorksExceptions.WorkNotExistException as e:
             raise WorksExceptions.WorkNotExistException("El trabajo no existe")
+        
+    def work_id(self, client_name):
+        work_dao = self.factory.get_controller('DAOcontroller')
+        return work_dao.work_id(client_name)
+    
+    def delete_work(self, work_id):
+        try:
+            work_dao = self.factory.get_controller('DAOcontroller')
+            work_dao.deleteWork(work_id)
+        except WorksExceptions.WorkNotExistException as e:
+            raise WorksExceptions.WorkNotExistException("El trabajo no existe")
+        
+    def delete_all_works(self, client_id):
+        work_dao = self.factory.get_controller('DAOcontroller')
+        work_dao.delete_all_works(client_id)
