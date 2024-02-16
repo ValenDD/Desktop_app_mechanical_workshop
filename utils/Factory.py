@@ -1,6 +1,7 @@
 from controllers import client_controller
 from controllers import dao_controller
 from controllers import work_controller
+from controllers import expenses_controller
 class Factory:
     _instance = None
     _controllers = {}
@@ -8,6 +9,7 @@ class Factory:
         'clientController': client_controller.ClientController,
         'DAOcontroller': dao_controller.DAOcontroller,
         'workController': work_controller.WorkController,
+        'expensesController': expenses_controller.ExpensesController,
     }
 
     def __new__(cls, *args, **kwargs):

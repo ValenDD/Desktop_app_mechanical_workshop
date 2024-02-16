@@ -1,5 +1,6 @@
 from dao.clientDAO import ClientDAO
 from dao.workDAO import WorkDAO
+from dao.expensesDAO import ExpensesDAO
 from dotenv import load_dotenv
 import os
 
@@ -121,3 +122,26 @@ class DAOcontroller:
             works = work_dao.list_works_per_month(month, year)
             work_dao.close_conection()
             return works
+        
+    #ExpensesDAO
+    def save_expense(self, work_name, recive_name, amount, date):
+        expenses_dao = ExpensesDAO(self.set_dbconfig())
+        expenses_dao.save(work_name, recive_name, amount, date)
+        expenses_dao.close_conection()
+        
+    def list_expenses(self, month, year):
+        expenses_dao = ExpensesDAO(self.set_dbconfig())
+        expenses = expenses_dao.list_expenses(month, year)
+        expenses_dao.close_conection()
+        return expenses
+    
+    def expense_id(self, work_name, recive_name, amount):
+        expenses_dao = ExpensesDAO(self.set_dbconfig())
+        expense = expenses_dao.expense_id(work_name, recive_name, amount)
+        expenses_dao.close_conection()
+        return expense
+    
+    def update_expense(self, id_expense, work_name, recive_name, amount):
+        expenses_dao = ExpensesDAO(self.set_dbconfig())
+        expenses_dao.update(id_expense, work_name, recive_name, amount)
+        expenses_dao.close_conection()

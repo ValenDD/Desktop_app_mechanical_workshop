@@ -56,9 +56,11 @@
     <property name="title">
      <string>Gastos/Ganancias</string>
     </property>
-    <addaction name="actionHistorial_de_Gastos"/>
+    <addaction name="actionHistorial_de_pagos"/>
     <addaction name="separator"/>
     <addaction name="actionCalcular_ganancias"/>
+    <addaction name="separator"/>
+    <addaction name="actionIngresar_pago"/>
     <addaction name="separator"/>
    </widget>
    <widget class="QMenu" name="menuMenu_Trabajos">
@@ -131,9 +133,9 @@
     <string>Trabajos cliente</string>
    </property>
   </action>
-  <action name="actionHistorial_de_Gastos">
+  <action name="actionHistorial_de_pagos">
    <property name="text">
-    <string>Historial de gastos</string>
+    <string>Historial de pagos</string>
    </property>
   </action>
   <action name="actionCalcular_ganancias">
@@ -154,6 +156,11 @@
   <action name="actionTrabajos_sin_saldar">
    <property name="text">
     <string>Trabajos sin saldar</string>
+   </property>
+  </action>
+  <action name="actionIngresar_pago">
+   <property name="text">
+    <string>Ingresar pago</string>
    </property>
   </action>
  </widget>

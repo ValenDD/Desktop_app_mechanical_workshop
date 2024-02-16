@@ -13,8 +13,12 @@ from WindowManager.Works.historialWorksAll import historialWorksWindow
 from WindowManager.Works.deleteWork import deleteWorkWindow
 from WindowManager.Works.update_works import updateWorkWindow
 from WindowManager.Works.worksPerMonth import worksPerMonthWindow
+from WindowManager.Expenses.historyPayment import historyPaymentWindow
+from WindowManager.Expenses.calculateGains import calculateGainsWindow
+from WindowManager.Expenses.newExpense import newExpenseWindow
 from utils import client_table_creation
 from utils import work_table_creation
+from utils import expenses_table_creation
 from utils import dbconection
 from PySide6.QtGui import QIcon, QPixmap
 
@@ -35,6 +39,8 @@ class MainWindow(QMainWindow, mainSceneUI.Ui_MainWindow):
         dbconection.create_database_if_not_exists(dbname, user, password, host, port)
         client_table_creation.create_tables_if_not_exist()
         work_table_creation.create_tables_if_not_exist()
+        expenses_table_creation.create_tables_if_not_exist()
+        
 
         self.actionNuevo_Cliente.triggered.connect(self._show_new_client_windows)
         self.actionListar_todos_los_Clientes.triggered.connect(self._show_client_list)
@@ -47,7 +53,24 @@ class MainWindow(QMainWindow, mainSceneUI.Ui_MainWindow):
         self.actionEliminar_Trabajo.triggered.connect(self._show_delete_work_window)
         self.actionHistorial_de_trabajos_mensuales.triggered.connect(self._show_work_list_per_month)
         
-    # Work
+        self.actionHistorial_de_pagos.triggered.connect(self._show_history_payment)
+        self.actionCalcular_ganancias.triggered.connect(self._show_calculate_gains)
+        self.actionIngresar_pago.triggered.connect(self._show_new_expense)
+        
+    # Expeses
+    def _show_history_payment(self):
+        self.history_payment = historyPaymentWindow()
+        self.history_payment.show()
+        
+    def _show_calculate_gains(self):
+        self.calculate_gains = calculateGainsWindow()
+        self.calculate_gains.show()
+    
+    def _show_new_expense(self):
+        self.new_expense = newExpenseWindow()
+        self.new_expense.show()
+        
+    # Works
     def _show_update_work_window(self):
         self.update_work = updateWorkWindow()
         self.update_work.show()
@@ -67,6 +90,7 @@ class MainWindow(QMainWindow, mainSceneUI.Ui_MainWindow):
     def _show_work_list_per_month(self):
         self.works_per_month = worksPerMonthWindow()
         self.works_per_month.show()
+        
     # Client
     def _show_delete_client_window(self):
         self.findDelete_client = findDeleteClientWindow()
