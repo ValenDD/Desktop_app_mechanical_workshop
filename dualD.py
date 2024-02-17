@@ -113,14 +113,14 @@ class MainWindow(QMainWindow, mainSceneUI.Ui_MainWindow):
             self._close_window()
         super().keyPressEvent(event)
 
-    def environment_variables():
+    def environment_variables(self):  # Añade 'self' aquí
         os.environ['DB_NAME'] = 'DualD'
         os.environ['DB_USER'] = 'postgres'
         os.environ['DB_PASSWORD'] = '1234'
         os.environ['DB_HOST'] = 'localhost'
         os.environ['DB_PORT'] = '5432'
 
-    def get_configuration():
+    def get_configuration(self):  # Y también aquí
         db_name = os.getenv('DB_NAME')
         db_user = os.getenv('DB_USER')
         db_password = os.getenv('DB_PASSWORD')
@@ -131,6 +131,7 @@ class MainWindow(QMainWindow, mainSceneUI.Ui_MainWindow):
         client_table_creation.create_tables_if_not_exist(db_name, db_user, db_password, db_host, db_port)
         work_table_creation.create_tables_if_not_exist(db_name, db_user, db_password, db_host, db_port)
         expenses_table_creation.create_tables_if_not_exist(db_name, db_user, db_password, db_host, db_port)
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
