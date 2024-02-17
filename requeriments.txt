@@ -2,3 +2,4 @@ python-dotenv
 PySide6
 psycopg2-binary
 SQLAlchemy
+pyinstaller
