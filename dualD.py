@@ -97,9 +97,7 @@ class MainWindow(QMainWindow, mainSceneUI.Ui_MainWindow):
         self.findDelete_client.show()
                 
     def _show_find_client_window(self):
-        from utils.Factory import Factory
-        self.client_controller = Factory().get_controller('clientController')
-        self.find_client = updateSearchClient(self.client_controller.list_client_only_name())
+        self.find_client = updateSearchClient()
         self.find_client.show()
 
     def _show_new_client_windows(self):

@@ -7,13 +7,12 @@ from WindowManager.error import errorWindow
 from WindowManager.notice import noticeWindow
 from exceptions import ClientExceptions
 
-
 class findDeleteClientWindow(QWidget, findDeleteClientWindowUI.Ui_Form):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
         self.setWindowIcon(QIcon('./assets/icono-windows.png'))
-        self.setWindowTitle("DualD - Buscar Cliente")
+        self.setWindowTitle("DualD - Eliminar Cliente")
         
         self.factory = Factory()
         self.client_controller = self.factory.get_controller("clientController")
@@ -30,9 +29,9 @@ class findDeleteClientWindow(QWidget, findDeleteClientWindowUI.Ui_Form):
             self.work_controller = self.factory.get_controller('workController')
             self.work_controller.delete_all_works(self.client_controller.client_id(client_name))
             self.client_controller.delete_client(client_name)
-            self.error = noticeWindow()
-            self.error.ErrorLabel.setText("Cliente eliminado con éxito")
-            self.error.show()
+            self.notice = noticeWindow()
+            self.notice.ErrorLabel.setText("Cliente eliminado con éxito")
+            self.notice.show()
             self._close_window()
         except ClientExceptions.ClientNotExistException as e:
             self.error = errorWindow()

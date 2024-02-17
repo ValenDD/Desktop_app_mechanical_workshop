@@ -23,7 +23,7 @@ class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(659, 407)
+        Form.resize(700, 361)
         self.gridLayout_2 = QGridLayout(Form)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
         self.gridLayout_4 = QGridLayout()
@@ -68,16 +68,6 @@ class Ui_Form(object):
 
         self.gridLayout_3.addWidget(self.lineEdit, 0, 1, 1, 1)
 
-        self.lineEdit_2 = QLineEdit(Form)
-        self.lineEdit_2.setObjectName(u"lineEdit_2")
-
-        self.gridLayout_3.addWidget(self.lineEdit_2, 1, 1, 1, 1)
-
-        self.lineEdit_3 = QLineEdit(Form)
-        self.lineEdit_3.setObjectName(u"lineEdit_3")
-
-        self.gridLayout_3.addWidget(self.lineEdit_3, 2, 1, 1, 1)
-        
         self.label_3 = QLabel(Form)
         self.label_3.setObjectName(u"label_3")
 
@@ -92,6 +82,16 @@ class Ui_Form(object):
         self.lineEdit_4.setObjectName(u"lineEdit_4")
 
         self.gridLayout_3.addWidget(self.lineEdit_4, 3, 1, 1, 1)
+
+        self.lineEdit_2 = QLineEdit(Form)
+        self.lineEdit_2.setObjectName(u"lineEdit_2")
+
+        self.gridLayout_3.addWidget(self.lineEdit_2, 1, 1, 1, 1)
+
+        self.lineEdit_3 = QLineEdit(Form)
+        self.lineEdit_3.setObjectName(u"lineEdit_3")
+
+        self.gridLayout_3.addWidget(self.lineEdit_3, 2, 1, 1, 1)
 
         self.label_8 = QLabel(Form)
         self.label_8.setObjectName(u"label_8")
@@ -113,6 +113,16 @@ class Ui_Form(object):
 
         self.gridLayout.addWidget(self.label_9, 6, 0, 1, 1)
 
+        self.textEdit_3 = QTextEdit(Form)
+        self.textEdit_3.setObjectName(u"textEdit_3")
+
+        self.gridLayout.addWidget(self.textEdit_3, 6, 1, 1, 1)
+
+        self.textEdit = QTextEdit(Form)
+        self.textEdit.setObjectName(u"textEdit")
+
+        self.gridLayout.addWidget(self.textEdit, 4, 1, 1, 1)
+
         self.dateEdit_2 = QDateEdit(Form)
         self.dateEdit_2.setObjectName(u"dateEdit_2")
 
@@ -122,21 +132,11 @@ class Ui_Form(object):
         self.dateEdit.setObjectName(u"dateEdit")
 
         self.gridLayout.addWidget(self.dateEdit, 2, 1, 1, 1)
-       
-        self.textEdit = QTextEdit(Form)
-        self.textEdit.setObjectName(u"textEdit")
 
-        self.gridLayout.addWidget(self.textEdit, 4, 1, 1, 1)
-        
         self.textEdit_2 = QTextEdit(Form)
         self.textEdit_2.setObjectName(u"textEdit_2")
 
         self.gridLayout.addWidget(self.textEdit_2, 5, 1, 1, 1)
-        
-        self.textEdit_3 = QTextEdit(Form)
-        self.textEdit_3.setObjectName(u"textEdit_3")
-
-        self.gridLayout.addWidget(self.textEdit_3, 6, 1, 1, 1)
 
         self.label_5 = QLabel(Form)
         self.label_5.setObjectName(u"label_5")

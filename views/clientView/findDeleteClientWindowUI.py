@@ -22,7 +22,7 @@ class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(376, 208)
+        Form.resize(400, 300)
         self.gridLayout_2 = QGridLayout(Form)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
         self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
@@ -79,7 +79,7 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
-        self.label.setText(QCoreApplication.translate("Form", u"Seleccione el cliente a ELIMINAR", None))
+        self.label.setText(QCoreApplication.translate("Form", u"Seleccione un cliente", None))
         self.Eliminar_button.setText(QCoreApplication.translate("Form", u"Eliminar", None))
         self.Cancelar_button.setText(QCoreApplication.translate("Form", u"Cancelar", None))
     # retranslateUi

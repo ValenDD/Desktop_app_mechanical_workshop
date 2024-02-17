@@ -24,7 +24,7 @@ class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(659, 769)
+        Form.resize(700, 472)
         self.gridLayout_2 = QGridLayout(Form)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
         self.gridLayout_4 = QGridLayout()
@@ -267,7 +267,7 @@ class Ui_Form(object):
         self.label_4.setText(QCoreApplication.translate("Form", u"Diagnostico", None))
         self.label.setText(QCoreApplication.translate("Form", u"Fecha Egreso", None))
         self.checkBox.setText(QCoreApplication.translate("Form", u"Saldada", None))
-        self.checkBox_2.setText(QCoreApplication.translate("Form", u"Setear", None))
+        self.checkBox_2.setText(QCoreApplication.translate("Form", u"Egresa Hoy?", None))
         self.label_11.setText(QCoreApplication.translate("Form", u"Nombre", None))
         self.pushButton.setText(QCoreApplication.translate("Form", u"Buscar", None))
         ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)

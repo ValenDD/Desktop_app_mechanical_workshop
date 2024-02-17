@@ -11,7 +11,7 @@ class newExpenseWindow(QWidget, paymentWorkUI.Ui_Form):
             super().__init__()
             self.setupUi(self)
             self.setWindowIcon(QIcon('./assets/icono-windows.png'))
-            self.setWindowTitle("DualD - Actualizar Trabajo")
+            self.setWindowTitle("DualD - Nuevo Pago")
             self.factory = Factory()
             self.pushButton_2.clicked.connect(self._add_expense)
             self.pushButton.clicked.connect(self._close_window)

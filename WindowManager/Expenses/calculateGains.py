@@ -8,7 +8,7 @@ class calculateGainsWindow(QWidget, calculateGainsUI.Ui_Form):
             super().__init__()
             self.setupUi(self)
             self.setWindowIcon(QIcon('./assets/icono-windows.png'))
-            self.setWindowTitle("DualD - Actualizar Trabajo")
+            self.setWindowTitle("DualD - Calculo de Ganancias")
             self.factory = Factory()
             self.month = None
             self.year = None

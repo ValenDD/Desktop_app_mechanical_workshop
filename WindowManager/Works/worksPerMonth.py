@@ -12,7 +12,7 @@ class worksPerMonthWindow(QWidget, worksPerMonthUI.Ui_Form):
         super().__init__()
         self.setupUi(self)
         self.setWindowIcon(QIcon('./assets/icono-windows.png'))
-        self.setWindowTitle("DualD - Actualizar Trabajo")
+        self.setWindowTitle("DualD - Trabajos del mes")
         self.factory = Factory()
         self.originalTexts = {}
         self.month = None

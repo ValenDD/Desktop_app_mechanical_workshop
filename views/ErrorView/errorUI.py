@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'Error.ui'
+## Form generated from reading UI file 'ErrorUI.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.6.1
 ##
@@ -22,7 +22,7 @@ class Ui_Frame(object):
     def setupUi(self, Frame):
         if not Frame.objectName():
             Frame.setObjectName(u"Frame")
-        Frame.resize(271, 77)
+        Frame.resize(275, 80)
         self.gridLayout_2 = QGridLayout(Frame)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
         self.gridLayout = QGridLayout()

@@ -23,7 +23,7 @@ class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(659, 259)
+        Form.resize(700, 300)
         self.gridLayout_2 = QGridLayout(Form)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
         self.gridLayout_6 = QGridLayout()
@@ -147,7 +147,7 @@ class Ui_Form(object):
         ___qtablewidgetitem10.setText(QCoreApplication.translate("Form", u"Saldada", None));
         self.label_11.setText(QCoreApplication.translate("Form", u"Nombre", None))
         self.pushButton.setText(QCoreApplication.translate("Form", u"Buscar", None))
-        self.Aceptar_button.setText(QCoreApplication.translate("Form", u"Eliminar", None))
+        self.Aceptar_button.setText(QCoreApplication.translate("Form", u"Agregar", None))
         self.Cancelar_button.setText(QCoreApplication.translate("Form", u"Cancelar", None))
     # retranslateUi
 

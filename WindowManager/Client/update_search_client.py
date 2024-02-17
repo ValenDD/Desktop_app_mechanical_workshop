@@ -7,24 +7,25 @@ from exceptions import ClientExceptions
 from utils.Factory import Factory
 
 class updateSearchClient(QWidget, updateClientUI.Ui_Form):
-    def __init__(self, clients):
+    def __init__(self):
         super().__init__()
         self.setupUi(self)
         self.setWindowIcon(QIcon('./assets/icono-windows.png'))
-        self.setWindowTitle("DualD - Clientes Encontrados")
-        self.clients = clients
-
+        self.setWindowTitle("DualD - Actualizar Informacion")
+        self.factory = Factory()
+        self.client_controller = self.factory.get_controller('clientController')
+        self.client = self.client_controller.list_client_only_name()
         self.pushButton.clicked.connect(self._close_window)
-        self.label_2.setVisible(False)
-        self.label_3.setVisible(False)
-        self.lineEdit.setVisible(False)
-        self.lineEdit_2.setVisible(False)
-        self.pushButton_2.setVisible(False)
-        self.pushButton.setVisible(False)
+        self.label_2.hide()
+        self.label_3.hide()
+        self.lineEdit.hide()
+        self.lineEdit_2.hide()
+        self.pushButton_2.hide()
+        self.pushButton.hide()
         
         self.comboBox.addItem("")
-        for index in range(len(clients)):
-            self.comboBox.addItem(clients[index][0])
+        for index in range(len(self.client)):
+            self.comboBox.addItem(self.client[index][0])
             
         self.comboBox.currentIndexChanged.connect(self.on_comboBox_changed)
         self.lineEdit.textChanged.connect(self.on_lineEdit_changed)
@@ -38,25 +39,23 @@ class updateSearchClient(QWidget, updateClientUI.Ui_Form):
         
     def on_comboBox_changed(self, index):
         if index > 0:
-            self.label_2.setVisible(True)
-            self.label_3.setVisible(True)
-            self.lineEdit.setVisible(True)
-            self.lineEdit_2.setVisible(True)
-            self.pushButton_2.setVisible(True)
-            self.pushButton.setVisible(True)
-            self.factory = Factory()
             self.client_controller = self.factory.get_controller('clientController')
             client = self.client_controller.find_users(self.comboBox.currentText())
             self.lineEdit.setText(client[0][1])
             self.lineEdit_2.setText(client[0][2])
+            self.label_2.show()
+            self.label_3.show()
+            self.lineEdit.show()
+            self.lineEdit_2.show()
+            self.pushButton_2.show()
+            self.pushButton.show()
         else:
-            self.label_2.setVisible(False)
-            self.label_3.setVisible(False)
-            self.lineEdit.setVisible(False)
-            self.lineEdit_2.setVisible(False)
+            self.label_2.hide()
+            self.label_3.hide()
+            self.lineEdit.hide()
+            self.lineEdit_2.hide()
             
     def on_lineEdit_changed(self, ):
-        self.factory = Factory()
         self.client_controller = self.factory.get_controller('clientController')
         client = self.client_controller.find_users(self.comboBox.currentText())
         name_changed = False
@@ -75,12 +74,12 @@ class updateSearchClient(QWidget, updateClientUI.Ui_Form):
             self.error.ErrorLabel.setText("El teléfono debe ser menor a 8 digitos")
             self.error.show()
             return
-        
+
         try:
             self.client_controller.update_client_name(self.comboBox.currentText(), self.lineEdit.text().strip(), self.lineEdit_2.text().strip())
-            self.error = noticeWindow()
-            self.error.ErrorLabel.setText("Cliente actualizado correctamente")
-            self.error.show()
+            self.notice = noticeWindow()
+            self.notice.ErrorLabel.setText("Cliente actualizado correctamente")
+            self.notice.show()
             self.close()
         except ClientExceptions.ClientNotExistException as e:
             self.error = errorWindow()

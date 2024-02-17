@@ -8,7 +8,7 @@ class historialWorksWindow(QWidget, historialWorksUI.Ui_Form):
         super().__init__()
         self.setupUi(self)
         self.setWindowIcon(QIcon('./assets/icono-windows.png'))
-        self.setWindowTitle("DualD - Lista de Trabajos")
+        self.setWindowTitle("DualD - Historico de Trabajos")
         
         self.tableWidget.horizontalHeader().setStyleSheet("""
         QHeaderView::section {
