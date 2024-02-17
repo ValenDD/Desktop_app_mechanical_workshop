@@ -5,7 +5,7 @@ a = Analysis(
     ['dualD.py'],
     pathex=[],
     binaries=[],
-    datas=[('assets', 'assets')],  # Cambiado para incluir toda la carpeta 'assets'
+    datas=[('assets', 'assets')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
