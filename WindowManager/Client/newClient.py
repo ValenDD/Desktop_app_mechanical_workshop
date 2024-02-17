@@ -64,7 +64,7 @@ class newClientWindow(QWidget, newClientUI.Ui_Form):
             self.error = noticeWindow()
             self.error.ErrorLabel.setText("Cliente creado con éxito")
             self.error.show()
-            self.close_window()
+            self._close_window()
         except ClientExceptions.ClientExistException as e:
             self.error = errorWindow()
             self.error.ErrorLabel.setText(str(e))
