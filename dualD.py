@@ -36,14 +36,8 @@ class MainWindow(QMainWindow, mainSceneUI.Ui_MainWindow):
         self.setWindowIcon(QIcon(resource_path(os.path.join('assets', 'icono-windows.ico'))))
         self.setWindowTitle("DualD - Sistema de gestión de clientes")
         self.label.setPixmap(QPixmap(resource_path(os.path.join('assets', 'fondo-MainScene.png'))))
-        load_dotenv()
-        # Configura tu DSN de PostgreSQL aquí
-        dbname = os.getenv('DB_NAME')
-        user = os.getenv('DB_USER')
-        password = os.getenv('DB_PASSWORD')
-        host = os.getenv('DB_HOST') 
-        port = os.getenv('DB_PORT') 
-        
+        self.environment_variables()
+        self.get_configuration()
 
         self.actionNuevo_Cliente.triggered.connect(self._show_new_client_windows)
         self.actionListar_todos_los_Clientes.triggered.connect(self._show_client_list)
