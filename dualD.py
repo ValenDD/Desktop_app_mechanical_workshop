@@ -43,10 +43,7 @@ class MainWindow(QMainWindow, mainSceneUI.Ui_MainWindow):
         password = os.getenv('DB_PASSWORD')
         host = os.getenv('DB_HOST') 
         port = os.getenv('DB_PORT') 
-        dbconection.create_database_if_not_exists(dbname, user, password, host, port)
-        client_table_creation.create_tables_if_not_exist()
-        work_table_creation.create_tables_if_not_exist()
-        expenses_table_creation.create_tables_if_not_exist()
+        
 
         self.actionNuevo_Cliente.triggered.connect(self._show_new_client_windows)
         self.actionListar_todos_los_Clientes.triggered.connect(self._show_client_list)
@@ -121,6 +118,25 @@ class MainWindow(QMainWindow, mainSceneUI.Ui_MainWindow):
         if event.key() in (Qt.Key_Return, Qt.Key_Escape):
             self._close_window()
         super().keyPressEvent(event)
+
+    def environment_variables():
+        os.environ['DB_NAME'] = 'DualD'
+        os.environ['DB_USER'] = 'postgres'
+        os.environ['DB_PASSWORD'] = '1234'
+        os.environ['DB_HOST'] = 'localhost'
+        os.environ['DB_PORT'] = '5432'
+
+    def get_configuration():
+        db_name = os.getenv('DB_NAME')
+        db_user = os.getenv('DB_USER')
+        db_password = os.getenv('DB_PASSWORD')
+        db_host = os.getenv('DB_HOST')
+        db_port = os.getenv('DB_PORT')
+        
+        dbconection.create_database_if_not_exists(db_name, db_user, db_password, db_host, db_port)
+        client_table_creation.create_tables_if_not_exist(db_name, db_user, db_password, db_host, db_port)
+        work_table_creation.create_tables_if_not_exist(db_name, db_user, db_password, db_host, db_port)
+        expenses_table_creation.create_tables_if_not_exist(db_name, db_user, db_password, db_host, db_port)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

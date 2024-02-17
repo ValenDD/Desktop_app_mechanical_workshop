@@ -4,17 +4,11 @@ from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 from dotenv import load_dotenv
 import os
 
-def create_tables_if_not_exist():
+def create_tables_if_not_exist(db_name, db_user, db_password, db_host, db_port):
     try:
         # Connect to the server
         load_dotenv()
-        conn = psycopg2.connect(
-            dbname = os.getenv('DB_NAME'),
-            user = os.getenv('DB_USER'),
-            password = os.getenv('DB_PASSWORD'),
-            host = os.getenv('DB_HOST'),
-            port = os.getenv('DB_PORT'),     
-        )
+        conn = psycopg2.connect(dbname=db_name, user=db_user, password=db_password, host=db_host, port=db_port)
         conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
         cur = conn.cursor()
 
