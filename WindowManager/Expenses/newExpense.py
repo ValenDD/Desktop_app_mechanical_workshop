@@ -6,12 +6,21 @@ from WindowManager.error import errorWindow
 from datetime import datetime
 from utils.Factory import Factory
 from PySide6.QtCore import Qt
+import sys
+import os
+
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
 
 class newExpenseWindow(QWidget, paymentWorkUI.Ui_Form):
     def __init__(self):
             super().__init__()
             self.setupUi(self)
-            self.setWindowIcon(QIcon('./assets/icono-windows.png'))
+            self.setWindowIcon(QIcon(resource_path(os.path.join('assets', 'icono-windows.ico'))))
             self.setWindowTitle("DualD - Nuevo Pago")
             self.factory = Factory()
             self.pushButton_2.clicked.connect(self._add_expense)

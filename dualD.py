@@ -23,13 +23,19 @@ from utils import expenses_table_creation
 from utils import dbconection
 from PySide6.QtGui import QIcon, QPixmap
 
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
 class MainWindow(QMainWindow, mainSceneUI.Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.setWindowIcon(QIcon('./assets/icono-windows.png'))
+        self.setWindowIcon(QIcon(resource_path(os.path.join('assets', 'icono-windows.ico'))))
         self.setWindowTitle("DualD - Sistema de gestión de clientes")
-        self.label.setPixmap(QPixmap(u"./assets/fondo-MainScene.png"))
+        self.label.setPixmap(QPixmap(resource_path(os.path.join('assets', 'fondo-MainScene.png'))))
         load_dotenv()
         # Configura tu DSN de PostgreSQL aquí
         dbname = os.getenv('DB_NAME')

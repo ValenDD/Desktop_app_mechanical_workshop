@@ -6,12 +6,21 @@ from WindowManager.notice import noticeWindow
 from WindowManager.error import errorWindow
 from exceptions import WorksExceptions
 from utils.Factory import Factory
+import sys
+import os
+
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
 
 class deleteWorkWindow(QWidget, deleteWorkUI.Ui_Form):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.setWindowIcon(QIcon('./assets/icono-windows.png'))
+        self.setWindowIcon(QIcon(resource_path(os.path.join('assets', 'icono-windows.ico'))))
         self.setWindowTitle("DualD - Eliminar Trabajo")
         self.factory = Factory()
         self.state = "initial"

@@ -5,12 +5,21 @@ from WindowManager.error import errorWindow
 from WindowManager.notice import noticeWindow
 from exceptions import ClientExceptions
 from utils.Factory import Factory
+import sys
+import os
+
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
 
 class updateSearchClient(QWidget, updateClientUI.Ui_Form):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.setWindowIcon(QIcon('./assets/icono-windows.png'))
+        self.setWindowIcon(QIcon(resource_path(os.path.join('assets', 'icono-windows.ico'))))
         self.setWindowTitle("DualD - Actualizar Informacion")
         self.factory = Factory()
         self.client_controller = self.factory.get_controller('clientController')
