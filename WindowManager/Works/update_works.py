@@ -17,6 +17,7 @@ class updateWorkWindow(QWidget, updateWorkUI.Ui_Form):
         self.currentCheckBox = None
         self.work_id = None
         self.originalTexts = {}
+        self.state = 'initial'
         self.client_name = None
         self.hasChanged = False
         self.tableWidget.horizontalHeader().setStyleSheet("""
@@ -54,15 +55,16 @@ class updateWorkWindow(QWidget, updateWorkUI.Ui_Form):
         self.label_7.hide()
         self.label_8.hide()
         self.checkBox_2.hide()
+        self.checkBox_2.setChecked(False)
+        self.dateEdit.setEnabled(False)
         
         self.checkBox_2.stateChanged.connect(self._show_date_out)
         self.pushButton.clicked.connect(self._search_client_works)
         self.Aceptar_button.clicked.connect(lambda: self._update_work())
-        self.Cancelar_button.clicked.connect(self._clsoe_window)
-        
-        
-        
+        self.Cancelar_button.clicked.connect(self._close_window)
+
     def _search_client_works(self):
+        self.state = 'searched'
         self.client_name = self.lineEdit_6.text().strip()
         works = self.factory.get_controller('workController').search_client_works(self.client_name)
         
@@ -111,6 +113,7 @@ class updateWorkWindow(QWidget, updateWorkUI.Ui_Form):
                 self._clearDisplayFields()
 
     def _displayRowData(self, row):
+        self.state = 'displayed'
         values = []
             
         for column in range(1, self.tableWidget.columnCount()):
@@ -124,7 +127,7 @@ class updateWorkWindow(QWidget, updateWorkUI.Ui_Form):
 
         fechaIngreso = QDate.fromString(values[1], dateFormat)
         fechaEgreso = QDate.fromString(values[2], dateFormat)
-        
+
         if fechaIngreso.isValid():
             self.dateEdit_2.setDate(fechaIngreso)
         if fechaEgreso.isValid():
@@ -271,6 +274,7 @@ class updateWorkWindow(QWidget, updateWorkUI.Ui_Form):
                 self.error = noticeWindow()
                 self.error.ErrorLabel.setText("Trabajo actualizado con éxito")
                 self.error.show()
+                self._close_window()
             except WorksExceptions.WorkNotExistException as e:
                 self.error = errorWindow()
                 self.error.ErrorLabel.setText(str(e))
@@ -295,9 +299,22 @@ class updateWorkWindow(QWidget, updateWorkUI.Ui_Form):
         else:
             self.dateEdit.setEnabled(False) 
     
-    def _clsoe_window(self):
+    def _close_window(self):
         self.hideElements()
         self.resetUI()
         self.lineEdit_6.clear()
         self.lineEdit_6.setFocus()
         self.close()
+
+    def keyPressEvent(self, event):
+        if event.key() in (Qt.Key_Return, Qt.Key_Enter):
+            if self.state == "initial":
+                self._search_client_works()
+            elif self.state == "searched":
+                self._displayRowData(self.tableWidget.currentRow())
+            elif self.state == "displayed":
+                self._update_work()
+        
+        if event.key() == Qt.Key_Escape:
+            self._close_window()
+        super().keyPressEvent(event)

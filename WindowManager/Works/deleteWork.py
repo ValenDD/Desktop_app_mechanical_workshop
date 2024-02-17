@@ -14,6 +14,7 @@ class deleteWorkWindow(QWidget, deleteWorkUI.Ui_Form):
         self.setWindowIcon(QIcon('./assets/icono-windows.png'))
         self.setWindowTitle("DualD - Eliminar Trabajo")
         self.factory = Factory()
+        self.state = "initial"
         self.currentCheckBox = None
         self.work_id = None
         self.originalTexts = {}
@@ -39,6 +40,7 @@ class deleteWorkWindow(QWidget, deleteWorkUI.Ui_Form):
         self.Cancelar_button.clicked.connect(self._close_window)
         
     def _search_work(self):
+        self.state = "searched"
         if(self.lineEdit_6.text().strip() == ""):
             self.error = errorWindow()
             self.error.ErrorLabel.setText("Ingrese un nombre")
@@ -114,24 +116,36 @@ class deleteWorkWindow(QWidget, deleteWorkUI.Ui_Form):
         self.tableWidget.setVisible(False)
         
     def _delete_work(self):
-        try:
-            self.work_controller = self.factory.get_controller('workController')
-            self.work_id = self.work_controller.work_id(self.client_name)
-            self.factory.get_controller('workController').delete_work(self.work_id[0])
-            self._resetUI()
-            self.error = noticeWindow()
-            self.error.ErrorLabel.setText("El trabajo ha sido eliminado")
-            self.error.show()
-            self._close_window()
-        except WorksExceptions.WorkNotExistException as e:
-            self.error = errorWindow()
-            self.error.ErrorLabel.setText(str(e))
-            self.error.show()
-        except Exception as e:
-            self.error = errorWindow()
-            self.error.ErrorLabel.setText("Seleccione un trabajo")
-            self.error.show()
+        if self.state == "searched":
+            if self.currentCheckBox and self.currentCheckBox.isChecked():
+                try:
+                    self.work_controller = self.factory.get_controller('workController')
+                    self.work_id = self.work_controller.work_id(self.client_name)
+                    self.factory.get_controller('workController').delete_work(self.work_id[0])
+                    self._resetUI()
+                    self.error = noticeWindow()
+                    self.error.ErrorLabel.setText("El trabajo ha sido eliminado")
+                    self.error.show()
+                    self._close_window()
+                except WorksExceptions.WorkNotExistException as e:
+                    self.error = errorWindow()
+                    self.error.ErrorLabel.setText(str(e))
+                    self.error.show()
+                except Exception as e:
+                    self.error = errorWindow()
+                    self.error.ErrorLabel.setText("Seleccione un trabajo")
+                    self.error.show()
+                self.state = "deleted"
             
     def _close_window(self):
         self.close()
-        
+    
+    def keyPressEvent(self, event):
+        if event.key() in (Qt.Key_Return, Qt.Key_Enter):
+            if self.state == "initial":
+                self._search_work()
+            elif self.state == "searched":
+                self._delete_work()
+        if event.key() == Qt.Key_Escape:
+            self._close_window()
+        super().keyPressEvent(event)

@@ -1,6 +1,7 @@
 from PySide6.QtWidgets import QWidget
 from views.clientView import newClientUI
 from PySide6.QtGui import QIcon
+from PySide6.QtCore import Qt
 from utils.Factory import Factory
 from WindowManager.error import errorWindow
 from WindowManager.notice import noticeWindow
@@ -13,11 +14,10 @@ class newClientWindow(QWidget, newClientUI.Ui_Form):
         self.setWindowIcon(QIcon('./assets/icono-windows.png'))
         self.setWindowTitle("DualD - Nuevo Cliente")
 
-        self.Aceptar_button.clicked.connect(self.pick_date)
-        self.Cancelar_button.clicked.connect(self.close_window)
+        self.Aceptar_button.clicked.connect(self._pick_date)
+        self.Cancelar_button.clicked.connect(self._close_window)
         
-
-    def pick_date(self):
+    def _pick_date(self):
         Nombre = self.Nombre_line_edit.text().strip()
         Apellido = self.Apellido_line_edit.text().strip()
         Telefono = self.Telefonos_line_edit.text().strip()
@@ -49,6 +49,7 @@ class newClientWindow(QWidget, newClientUI.Ui_Form):
         Nombre_completo = Nombre + " " + Apellido
         self.factory = Factory()
         self.client_controller = self.factory.get_controller("clientController")
+
         try:
             self.client_controller.create_user(Nombre_completo, Telefono)
             self.error = noticeWindow()
@@ -64,5 +65,13 @@ class newClientWindow(QWidget, newClientUI.Ui_Form):
             self.error.ErrorLabel.setText(str(e))
             self.error.show()
 
-    def close_window(self):
+    def _close_window(self):
         self.close()
+
+    def keyPressEvent(self, event):
+        if event.key() in (Qt.Key_Return, Qt.Key_Enter):
+            self._pick_date()
+        
+        if event.key() == Qt.Key_Escape:
+            self._close_window()
+        super().keyPressEvent(event)

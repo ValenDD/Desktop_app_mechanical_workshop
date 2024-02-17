@@ -1,6 +1,6 @@
 from PySide6.QtWidgets import QWidget, QHeaderView
 from views.workView import historialWorksUI
-from PySide6.QtGui import QIcon
+from PySide6.QtGui import QIcon, Qt
 from utils.Factory import Factory
 
 class historialWorksWindow(QWidget, historialWorksUI.Ui_Form):
@@ -23,14 +23,11 @@ class historialWorksWindow(QWidget, historialWorksUI.Ui_Form):
         for column in range(3):
             self.tableWidget.resizeColumnToContents(column)
             
-        
         self.factory = Factory()
         self.work_controller = self.factory.get_controller('workController')
         works = self.work_controller.list_works()
         self._add_works_to_table(works)
 
-
-        
     def _add_works_to_table(self, works):
         self.tableWidget.setRowCount(len(works))
         for i in range(len(works)):
@@ -50,6 +47,10 @@ class historialWorksWindow(QWidget, historialWorksUI.Ui_Form):
         header.setMinimumSectionSize(117)
         header.setSectionResizeMode(QHeaderView.Stretch)
             
-            
-            
-            
+    def _close_window(self):
+        self.close()
+
+    def keyPressEvent(self, event):
+        if event.key() == Qt.Key_Escape:
+            self._close_window()
+        super().keyPressEvent(event)

@@ -1,6 +1,6 @@
 from PySide6.QtWidgets import QWidget
 from views.workView import newWorkUI
-from PySide6.QtGui import QIcon
+from PySide6.QtGui import QIcon, Qt
 from utils.Factory import Factory
 from WindowManager.error import errorWindow
 from WindowManager.notice import noticeWindow
@@ -30,7 +30,6 @@ class newWorkWindow(QWidget, newWorkUI.Ui_Form):
         total_price = self._convert_to_numeric(self.lineEdit_5.text().strip())
         date_in = self.dateEdit_2.text()
         
-            
         diagnosis = self.textEdit.toPlainText().strip()
         repair = self.textEdit_2.toPlainText().strip()
         payment_method = self.textEdit_3.toPlainText().strip()
@@ -75,3 +74,11 @@ class newWorkWindow(QWidget, newWorkUI.Ui_Form):
             
     def _close_window(self):
         self.close()
+    
+    def keyPressEvent(self, event):
+        if event.key() in (Qt.Key_Return, Qt.Key_Enter):
+            self._create_work()
+        
+        if event.key() == Qt.Key_Escape:
+            self._close_window()
+        super().keyPressEvent(event)

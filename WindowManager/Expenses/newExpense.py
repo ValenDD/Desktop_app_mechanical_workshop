@@ -5,6 +5,7 @@ from WindowManager.notice import noticeWindow
 from WindowManager.error import errorWindow
 from datetime import datetime
 from utils.Factory import Factory
+from PySide6.QtCore import Qt
 
 class newExpenseWindow(QWidget, paymentWorkUI.Ui_Form):
     def __init__(self):
@@ -53,3 +54,11 @@ class newExpenseWindow(QWidget, paymentWorkUI.Ui_Form):
         
     def _close_window(self):
         self.close()
+
+    def keyPressEvent(self, event):
+        if event.key() in (Qt.Key_Return, Qt.Key_Enter):
+            self._add_expense()
+        
+        if event.key() == Qt.Key_Escape:
+            self._close_window()
+        super().keyPressEvent(event)

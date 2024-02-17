@@ -2,6 +2,7 @@ from PySide6.QtWidgets import QWidget, QHeaderView
 from views.clientView import clientListWindowUI
 from PySide6.QtGui import QIcon
 from utils.Factory import Factory
+from PySide6.QtCore import Qt
 
 class clientListWindow(QWidget, clientListWindowUI.Ui_Form):
     def __init__(self):
@@ -35,4 +36,10 @@ class clientListWindow(QWidget, clientListWindowUI.Ui_Form):
             self.Table.setItem(i, 0, clientListWindowUI.QTableWidgetItem(data[i][1]))
             self.Table.setItem(i, 1, clientListWindowUI.QTableWidgetItem(data[i][2]))
         
-        
+    def _close_window(self):
+        self.close()
+    
+    def keyPressEvent(self, event):
+        if event.key() == Qt.Key_Escape:
+            self._close_window()
+        super().keyPressEvent(event)

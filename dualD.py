@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 import os
 from PySide6.QtWidgets import QApplication, QMainWindow
 from views import mainSceneUI
+from PySide6.QtCore import Qt
 from WindowManager.Client.newClient import newClientWindow
 from views.clientView import *
 from WindowManager.Client.clientList import clientListWindow
@@ -40,7 +41,6 @@ class MainWindow(QMainWindow, mainSceneUI.Ui_MainWindow):
         client_table_creation.create_tables_if_not_exist()
         work_table_creation.create_tables_if_not_exist()
         expenses_table_creation.create_tables_if_not_exist()
-        
 
         self.actionNuevo_Cliente.triggered.connect(self._show_new_client_windows)
         self.actionListar_todos_los_Clientes.triggered.connect(self._show_client_list)
@@ -107,6 +107,14 @@ class MainWindow(QMainWindow, mainSceneUI.Ui_MainWindow):
     def _show_client_list(self):
         self.client_list = clientListWindow()
         self.client_list.show()
+
+    def _close_window(self):
+        self.close()
+    
+    def keyPressEvent(self, event):        
+        if event.key() in (Qt.Key_Return, Qt.Key_Escape):
+            self._close_window()
+        super().keyPressEvent(event)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

@@ -6,6 +6,7 @@ from utils.Factory import Factory
 from WindowManager.error import errorWindow
 from WindowManager.notice import noticeWindow
 from exceptions import ClientExceptions
+from PySide6.QtCore import Qt
 
 class findDeleteClientWindow(QWidget, findDeleteClientWindowUI.Ui_Form):
     def __init__(self):
@@ -21,7 +22,7 @@ class findDeleteClientWindow(QWidget, findDeleteClientWindowUI.Ui_Form):
             self.lista_clientes.addItem(clients[index][0])
         
         self.Eliminar_button.clicked.connect(self._delete_client)
-        self.Cancelar_button.clicked.connect(self.close)
+        self.Cancelar_button.clicked.connect(self._close_window)
         
     def _delete_client(self):
         client_name = self.lista_clientes.currentText()
@@ -44,3 +45,11 @@ class findDeleteClientWindow(QWidget, findDeleteClientWindowUI.Ui_Form):
         
     def _close_window(self):
         self.close()
+
+    def keyPressEvent(self, event):
+        if event.key() in (Qt.Key_Return, Qt.Key_Enter):
+            self._delete_client()
+        
+        if event.key() == Qt.Key_Escape:
+            self._close_window()
+        super().keyPressEvent(event)

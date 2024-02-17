@@ -49,4 +49,13 @@ class worksPerMonthWindow(QWidget, worksPerMonthUI.Ui_Form):
         header.setSectionResizeMode(QHeaderView.Stretch)
         
         self.tableWidget.setVisible(True)
-            
+    
+    def _close_window(self):
+        self.close()
+
+    def keyPressEvent(self, event):
+        if event.key() == Qt.Key_Escape:
+            self._close_window()
+        if event.key() in (Qt.Key_Return, Qt.Key_Enter):
+            self._show_work_list_per_month()
+        super().keyPressEvent(event)

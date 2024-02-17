@@ -45,7 +45,6 @@ class Ui_Form(object):
 
         self.gridLayout.addWidget(self.lista_clientes, 0, 2, 1, 1)
 
-
         self.gridLayout_2.addLayout(self.gridLayout, 0, 1, 1, 1)
 
         self.gridLayout_3 = QGridLayout()

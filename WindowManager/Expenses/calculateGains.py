@@ -1,5 +1,5 @@
 from views.expensesView import calculateGainsUI
-from PySide6.QtGui import QIcon
+from PySide6.QtGui import QIcon, Qt
 from PySide6.QtWidgets import QWidget, QHeaderView, QWidget
 from utils.Factory import Factory
 
@@ -42,3 +42,11 @@ class calculateGainsWindow(QWidget, calculateGainsUI.Ui_Form):
     
     def _close_window(self):
         self.close()
+    
+    def keyPressEvent(self, event):
+        if event.key() in (Qt.Key_Return, Qt.Key_Enter):
+            self._calculate_gains()
+        
+        if event.key() == Qt.Key_Escape:
+            self._close_window()
+        super().keyPressEvent(event)

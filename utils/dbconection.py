@@ -6,7 +6,7 @@ def create_database_if_not_exists(dbname, user, password, host, port):
     try:
         # Connect to the default PostgreSQL database
         conn = psycopg2.connect(
-            dbname=dbname,
+            dbname="postgres",  # Connect to the default database
             user=user,
             password=password,
             host=host,
@@ -15,7 +15,7 @@ def create_database_if_not_exists(dbname, user, password, host, port):
         conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
         cur = conn.cursor()
 
-        # Check if the database already exists
+        # Check if the target database already exists
         cur.execute(
             sql.SQL("SELECT 1 FROM pg_catalog.pg_database WHERE datname = %s"),
             [dbname]
@@ -36,4 +36,3 @@ def create_database_if_not_exists(dbname, user, password, host, port):
         conn.close()
     except Exception as e:
         print("Error:", e)
-

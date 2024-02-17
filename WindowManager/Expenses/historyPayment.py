@@ -154,3 +154,10 @@ class historyPaymentWindow(QWidget, paymentHistoryUI.Ui_Form):
 
     def _close_window(self):
         self.close()
+
+    def keyPressEvent(self, event):
+        if event.key() == Qt.Key_Return or event.key() == Qt.Key_Enter:
+            self._show_expenses()
+        elif event.key() == Qt.Key_Escape:
+            self._close_window()
+        super().keyPressEvent(event)

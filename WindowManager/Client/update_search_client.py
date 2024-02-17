@@ -1,6 +1,6 @@
 from PySide6.QtWidgets import QWidget
 from views.clientView import updateClientUI
-from PySide6.QtGui import QIcon
+from PySide6.QtGui import QIcon, Qt
 from WindowManager.error import errorWindow
 from WindowManager.notice import noticeWindow
 from exceptions import ClientExceptions
@@ -27,17 +27,17 @@ class updateSearchClient(QWidget, updateClientUI.Ui_Form):
         for index in range(len(self.client)):
             self.comboBox.addItem(self.client[index][0])
             
-        self.comboBox.currentIndexChanged.connect(self.on_comboBox_changed)
-        self.lineEdit.textChanged.connect(self.on_lineEdit_changed)
-        self.lineEdit_2.textChanged.connect(self.on_lineEdit_changed)
-        self.on_comboBox_changed(self.comboBox.currentIndex())
-        self.pushButton_2.clicked.connect(self.update_client)
+        self.comboBox.currentIndexChanged.connect(self._on_comboBox_changed)
+        self.lineEdit.textChanged.connect(self._on_lineEdit_changed)
+        self.lineEdit_2.textChanged.connect(self._on_lineEdit_changed)
+        self._on_comboBox_changed(self.comboBox.currentIndex())
+        self.pushButton_2.clicked.connect(self._update_client)
         self.pushButton.clicked.connect(self._close_window)
         
     def _close_window(self):
         self.close()
         
-    def on_comboBox_changed(self, index):
+    def _on_comboBox_changed(self, index):
         if index > 0:
             self.client_controller = self.factory.get_controller('clientController')
             client = self.client_controller.find_users(self.comboBox.currentText())
@@ -55,7 +55,7 @@ class updateSearchClient(QWidget, updateClientUI.Ui_Form):
             self.lineEdit.hide()
             self.lineEdit_2.hide()
             
-    def on_lineEdit_changed(self, ):
+    def _on_lineEdit_changed(self, ):
         self.client_controller = self.factory.get_controller('clientController')
         client = self.client_controller.find_users(self.comboBox.currentText())
         name_changed = False
@@ -68,7 +68,7 @@ class updateSearchClient(QWidget, updateClientUI.Ui_Form):
         if name_changed or phone_changed:
             self.pushButton_2.setEnabled(True)
         
-    def update_client(self):
+    def _update_client(self):
         if len(self.lineEdit_2.text().strip()) < 9:
             self.error = errorWindow()
             self.error.ErrorLabel.setText("El teléfono debe ser menor a 8 digitos")
@@ -89,3 +89,11 @@ class updateSearchClient(QWidget, updateClientUI.Ui_Form):
             self.error = errorWindow()
             self.error.ErrorLabel.setText(str(e))
             self.error.show()
+
+    def keyPressEvent(self, event):
+        if event.key() in (Qt.Key_Return, Qt.Key_Enter):
+            self._update_client()
+        
+        if event.key() == Qt.Key_Escape:
+            self._close_window()
+        super().keyPressEvent(event)
