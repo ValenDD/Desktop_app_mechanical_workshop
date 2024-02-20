@@ -16,15 +16,6 @@ Install PostgreSQL: If you haven't already, download and install PostgreSQL. Dur
 
 Important: To ensure that your system can interact with PostgreSQL from the command line, you must add the path to PostgreSQL's bin directory to your system's PATH environment variable. This directory is typically found within your PostgreSQL installation path (e.g., C:/Program Files/PostgreSQL/<version>/bin on Windows or /usr/local/pgsql/bin on Unix systems). You can modify the PATH variable through your system's environment settings. Adding PostgreSQL to the PATH makes it possible to execute PostgreSQL commands from any terminal window.
 
-Set Environment Variables: Ensure to set the following environment variables according to your environment settings:
-
-DB_NAME: Name of your database.
-DB_USER: Your database user.
-DB_PASSWORD: Your database password.
-DB_HOST: Host address of your database.
-DB_PORT: Port number your database is running on.
-Setting these variables ensures that the software can correctly connect to your database.
-
 Execute PyInstaller: To build the application, run the following command in your terminal or command prompt:
 
 pyinstaller dualD.spec
@@ -52,15 +43,6 @@ pip install -r requirements.txt
 Instalar PostgreSQL: Si aún no lo ha hecho, descargue e instale PostgreSQL. Durante la instalación, establezca la contraseña en 1234 y el puerto en 5432 para coincidir con la configuración predeterminada de la base de datos del software.
 
 Importante: Para asegurar que su sistema pueda interactuar con PostgreSQL desde la línea de comandos, debe agregar la ruta hacia el directorio bin de PostgreSQL a la variable de entorno PATH de su sistema. Este directorio se encuentra típicamente dentro de la ruta de instalación de PostgreSQL (por ejemplo, C:/Program Files/PostgreSQL/<versión>/bin en Windows o /usr/local/pgsql/bin en sistemas Unix). Puede modificar la variable PATH a través de la configuración de entorno de su sistema. Agregar PostgreSQL al PATH permite ejecutar comandos de PostgreSQL desde cualquier ventana de terminal.
-
-Establecer Variables de Entorno: Asegúrese de configurar las siguientes variables de entorno de acuerdo con los ajustes de su entorno:
-
-DB_NAME: Nombre de su base de datos.
-DB_USER: Usuario de su base de datos.
-DB_PASSWORD: Contraseña de su base de datos.
-DB_HOST: Dirección del host de su base de datos.
-DB_PORT: Número del puerto donde se ejecuta su base de datos.
-Establecer estas variables garantiza que el software pueda conectarse correctamente a su base de datos.
 
 Ejecutar PyInstaller: Para construir la aplicación, ejecute el siguiente comando en su terminal o línea de comandos:
 
