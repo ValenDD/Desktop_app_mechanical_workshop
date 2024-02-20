@@ -9,14 +9,27 @@ PostgreSQL: You will need PostgreSQL installed with the following configurations
 Password: 1234
 Port: 5432
 Steps
-Install Python Requirements: Navigate to the root directory of this project in your terminal or command prompt. Run the following command to install the necessary Python libraries specified in requirements.txt:  pip install -r requirements.txt
+Install Python Requirements: Navigate to the root directory of this project in your terminal or command prompt. Run the following command to install the necessary Python libraries specified in requirements.txt:
+
+pip install -r requirements.txt
 Install PostgreSQL: If you haven't already, download and install PostgreSQL. During the installation, set the password to 1234 and the port to 5432 to match the software's default database configuration.
 
-Execute PyInstaller: To build the application, run the following command in your terminal or command prompt: pyinstaller dualD.spec
+Set Environment Variables: Ensure to set the following environment variables according to your environment settings:
 
+DB_NAME: Name of your database.
+DB_USER: Your database user.
+DB_PASSWORD: Your database password.
+DB_HOST: Host address of your database.
+DB_PORT: Port number your database is running on.
+Setting these variables ensures that the software can correctly connect to your database.
+
+Execute PyInstaller: To build the application, run the following command in your terminal or command prompt:
+
+pyinstaller dualD.spec
 This will generate an executable version of the software in the dist directory.
 
 Enjoy the Software: Once the installation is complete, navigate to the dist folder, find the executable, and run it to start managing your automotive workshop more efficiently.
+
 Support
 For any issues or questions, please refer to the documentation or contact our support team.
 
@@ -31,12 +44,26 @@ PostgreSQL: Necesitará tener instalado PostgreSQL con las siguientes configurac
 Contraseña: 1234
 Puerto: 5432
 Pasos
-Instalar Requerimientos de Python: Navegue al directorio raíz de este proyecto en su terminal o línea de comandos. Ejecute el siguiente comando para instalar las librerías de Python necesarias especificadas en requirements.txt: pip install -r requirements.txt
+Instalar Requerimientos de Python: Navegue al directorio raíz de este proyecto en su terminal o línea de comandos. Ejecute el siguiente comando para instalar las librerías de Python necesarias especificadas en requirements.txt:
+
+pip install -r requirements.txt
 Instalar PostgreSQL: Si aún no lo ha hecho, descargue e instale PostgreSQL. Durante la instalación, establezca la contraseña en 1234 y el puerto en 5432 para coincidir con la configuración predeterminada de la base de datos del software.
 
-Ejecutar PyInstaller: Para construir la aplicación, ejecute el siguiente comando en su terminal o línea de comandos: pyinstaller dualD.spec
+Establecer Variables de Entorno: Asegúrese de configurar las siguientes variables de entorno de acuerdo con los ajustes de su entorno:
+
+DB_NAME: Nombre de su base de datos.
+DB_USER: Usuario de su base de datos.
+DB_PASSWORD: Contraseña de su base de datos.
+DB_HOST: Dirección del host de su base de datos.
+DB_PORT: Número del puerto donde se ejecuta su base de datos.
+Establecer estas variables garantiza que el software pueda conectarse correctamente a su base de datos.
+
+Ejecutar PyInstaller: Para construir la aplicación, ejecute el siguiente comando en su terminal o línea de comandos:
+
+pyinstaller dualD.spec
 Esto generará una versión ejecutable del software en el directorio dist.
 
 Disfrutar del Software: Una vez completada la instalación, navegue a la carpeta dist, encuentre el ejecutable y ejecútelo para comenzar a gestionar su taller automotriz de manera más eficiente.
+
 Soporte
 Para cualquier problema o pregunta, por favor consulte la documentación o contacte a nuestro equipo de soporte.
