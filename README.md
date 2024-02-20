@@ -14,6 +14,8 @@ Install Python Requirements: Navigate to the root directory of this project in y
 pip install -r requirements.txt
 Install PostgreSQL: If you haven't already, download and install PostgreSQL. During the installation, set the password to 1234 and the port to 5432 to match the software's default database configuration.
 
+Important: To ensure that your system can interact with PostgreSQL from the command line, you must add the path to PostgreSQL's bin directory to your system's PATH environment variable. This directory is typically found within your PostgreSQL installation path (e.g., C:/Program Files/PostgreSQL/<version>/bin on Windows or /usr/local/pgsql/bin on Unix systems). You can modify the PATH variable through your system's environment settings. Adding PostgreSQL to the PATH makes it possible to execute PostgreSQL commands from any terminal window.
+
 Set Environment Variables: Ensure to set the following environment variables according to your environment settings:
 
 DB_NAME: Name of your database.
@@ -48,6 +50,8 @@ Instalar Requerimientos de Python: Navegue al directorio raíz de este proyecto 
 
 pip install -r requirements.txt
 Instalar PostgreSQL: Si aún no lo ha hecho, descargue e instale PostgreSQL. Durante la instalación, establezca la contraseña en 1234 y el puerto en 5432 para coincidir con la configuración predeterminada de la base de datos del software.
+
+Importante: Para asegurar que su sistema pueda interactuar con PostgreSQL desde la línea de comandos, debe agregar la ruta hacia el directorio bin de PostgreSQL a la variable de entorno PATH de su sistema. Este directorio se encuentra típicamente dentro de la ruta de instalación de PostgreSQL (por ejemplo, C:/Program Files/PostgreSQL/<versión>/bin en Windows o /usr/local/pgsql/bin en sistemas Unix). Puede modificar la variable PATH a través de la configuración de entorno de su sistema. Agregar PostgreSQL al PATH permite ejecutar comandos de PostgreSQL desde cualquier ventana de terminal.
 
 Establecer Variables de Entorno: Asegúrese de configurar las siguientes variables de entorno de acuerdo con los ajustes de su entorno:
 
