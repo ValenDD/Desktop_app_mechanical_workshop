@@ -1,5 +1,7 @@
 import subprocess
 import os
+from WindowManager.notice import noticeWindow
+from WindowManager.error import errorWindow
 
 def do_backup(db_name, db_user, db_password, db_host, db_port):
     documents_dir = os.path.join(os.path.expanduser('~'), 'Documents', 'BackupsPostgreSQL')
@@ -13,8 +15,12 @@ def do_backup(db_name, db_user, db_password, db_host, db_port):
     
     try:
         subprocess.run(command, check=True, shell=True)
-        print('Backup realizado con éxito en:', backup_file)
+        error = noticeWindow()
+        error.ErrorLabel.setText("Backup realizado con éxito")
+        error.show()
     except subprocess.CalledProcessError as e:
-        print(f'Error al realizar el backup: {e}')
+        error = errorWindow()
+        error.ErrorLabel.setText("Error al realizar el backup")
+        error.show()
     finally:
         del os.environ["PGPASSWORD"]
