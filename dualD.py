@@ -42,9 +42,11 @@ class MainWindow(QMainWindow, mainSceneUI.Ui_MainWindow):
         self.setWindowIcon(QIcon(resource_path(os.path.join('assets', 'icono-windows.ico'))))
         self.setWindowTitle("DualD - Sistema de gestión de clientes")
         self.label.setPixmap(QPixmap(resource_path(os.path.join('assets', 'fondo-MainScene.png'))))
+
+        self.load_configuration() 
         self.environment_variables()
         self.get_configuration()
-
+        
         self.actionNuevo_Cliente.triggered.connect(self._show_new_client_windows)
         self.actionListar_todos_los_Clientes.triggered.connect(self._show_client_list)
         self.actionActualizar_informacion.triggered.connect(self._show_find_client_window)
