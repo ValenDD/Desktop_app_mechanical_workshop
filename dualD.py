@@ -1,7 +1,7 @@
 import sys
 from dotenv import load_dotenv
 import os
-from PySide6.QtWidgets import QApplication, QMainWindow
+from PySide6.QtWidgets import QApplication, QMainWindow, QInputDialog
 from views import mainSceneUI
 from PySide6.QtCore import Qt
 from WindowManager.Client.newClient import newClientWindow
@@ -22,6 +22,7 @@ from utils import work_table_creation
 from utils import expenses_table_creation
 from utils import dbconection
 from PySide6.QtGui import QIcon, QPixmap
+from utils import backup_database
 
 def resource_path(relative_path):
     try:
@@ -33,6 +34,11 @@ class MainWindow(QMainWindow, mainSceneUI.Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+        self.db_name = None
+        self.db_user = None
+        self.db_password = None
+        self.db_host = None
+        self.db_port = None
         self.setWindowIcon(QIcon(resource_path(os.path.join('assets', 'icono-windows.ico'))))
         self.setWindowTitle("DualD - Sistema de gestión de clientes")
         self.label.setPixmap(QPixmap(resource_path(os.path.join('assets', 'fondo-MainScene.png'))))
@@ -53,6 +59,12 @@ class MainWindow(QMainWindow, mainSceneUI.Ui_MainWindow):
         self.actionHistorial_de_pagos.triggered.connect(self._show_history_payment)
         self.actionCalcular_ganancias.triggered.connect(self._show_calculate_gains)
         self.actionIngresar_pago.triggered.connect(self._show_new_expense)
+        
+        self.actionRespaldar.triggered.connect(self._backup)
+    
+    # Backup
+    def _backup(self):
+        backup_database.do_backup(self.db_name, self.db_user, self.db_password, self.db_host, self.db_port)
         
     # Expeses
     def _show_history_payment(self):
@@ -113,26 +125,50 @@ class MainWindow(QMainWindow, mainSceneUI.Ui_MainWindow):
             self._close_window()
         super().keyPressEvent(event)
 
-    def environment_variables(self):  # Añade 'self' aquí
-        os.environ['DB_NAME'] = 'DualD'
-        os.environ['DB_USER'] = 'postgres'
-        os.environ['DB_PASSWORD'] = '1234'
-        os.environ['DB_HOST'] = 'localhost'
-        os.environ['DB_PORT'] = '5432'
+    def environment_variables(self):
+        load_dotenv()
 
-    def get_configuration(self):  # Y también aquí
-        db_name = os.getenv('DB_NAME')
-        db_user = os.getenv('DB_USER')
-        db_password = os.getenv('DB_PASSWORD')
-        db_host = os.getenv('DB_HOST')
-        db_port = os.getenv('DB_PORT')
+    def get_configuration(self):
+        self.db_name = os.getenv('DB_NAME')
+        self.db_user = os.getenv('DB_USER')
+        self.db_password = os.getenv('DB_PASSWORD')
+        self.db_host = os.getenv('DB_HOST')
+        self.db_port = os.getenv('DB_PORT')
         
-        dbconection.create_database_if_not_exists(db_name, db_user, db_password, db_host, db_port)
-        client_table_creation.create_tables_if_not_exist(db_name, db_user, db_password, db_host, db_port)
-        work_table_creation.create_tables_if_not_exist(db_name, db_user, db_password, db_host, db_port)
-        expenses_table_creation.create_tables_if_not_exist(db_name, db_user, db_password, db_host, db_port)
+        dbconection.create_database_if_not_exists(self.db_name, self.db_user, self.db_password, self.db_host, self.db_port)
+        client_table_creation.create_tables_if_not_exist(self.db_name, self.db_user, self.db_password, self.db_host, self.db_port)
+        work_table_creation.create_tables_if_not_exist(self.db_name, self.db_user, self.db_password, self.db_host, self.db_port)
+        expenses_table_creation.create_tables_if_not_exist(self.db_name, self.db_user, self.db_password, self.db_host, self.db_port)
+
+    def set_config(self):
+        
+        print("Configurando la aplicación por primera vez...")
+    
+        db_name, ok = QInputDialog.getText(self, "Configuración", "Ingrese el nombre de la base de datos:")
+        if ok and db_name:
+            db_user, ok = QInputDialog.getText(self, "Configuración", "Ingrese el usuario de la base de datos:")
+        if ok and db_user:
+            db_password, ok = QInputDialog.getText(self, "Configuración", "Ingrese la contraseña de la base de datos:")
+        if ok and db_password:
+            db_host, ok = QInputDialog.getText(self, "Configuración", "Ingrese el host de la base de datos:")
+        if ok and db_host:
+            db_port, ok = QInputDialog.getText(self, "Configuración", "Ingrese el puerto de la base de datos:")
+        if ok and db_port:
+            
+            with open('.env', 'w') as f:
+                f.write(f"DB_NAME={db_name}\n")
+                f.write(f"DB_USER={db_user}\n")
+                f.write(f"DB_PASSWORD={db_password}\n")
+                f.write(f"DB_HOST={db_host}\n")
+                f.write(f"DB_PORT={db_port}\n")
+
+    def load_configuration(self):
+        if not os.path.exists('.env'):
+            self.set_config()
+        load_dotenv()
 
 
+        
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     mainWindow = MainWindow()

@@ -57,6 +57,8 @@ class Ui_MainWindow(object):
         self.actionTrabajos_sin_saldar.setObjectName(u"actionTrabajos_sin_saldar")
         self.actionIngresar_pago = QAction(MainWindow)
         self.actionIngresar_pago.setObjectName(u"actionIngresar_pago")
+        self.actionRespaldar = QAction(MainWindow)
+        self.actionRespaldar.setObjectName(u"actionRespaldar")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout = QGridLayout(self.centralwidget)
@@ -78,6 +80,8 @@ class Ui_MainWindow(object):
         self.menuMenu_Gastos_Ganancias.setObjectName(u"menuMenu_Gastos_Ganancias")
         self.menuMenu_Trabajos = QMenu(self.menubar)
         self.menuMenu_Trabajos.setObjectName(u"menuMenu_Trabajos")
+        self.menuRespaldo = QMenu(self.menubar)
+        self.menuRespaldo.setObjectName(u"menuRespaldo")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
@@ -86,6 +90,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuMenu_Clientes.menuAction())
         self.menubar.addAction(self.menuMenu_Trabajos.menuAction())
         self.menubar.addAction(self.menuMenu_Gastos_Ganancias.menuAction())
+        self.menubar.addAction(self.menuRespaldo.menuAction())
         self.menuMenu_Clientes.addAction(self.actionNuevo_Cliente)
         self.menuMenu_Clientes.addSeparator()
         self.menuMenu_Clientes.addAction(self.actionEliminar_Cliente)
@@ -110,6 +115,7 @@ class Ui_MainWindow(object):
         self.menuMenu_Trabajos.addSeparator()
         self.menuMenu_Trabajos.addAction(self.actionHistorial_de_trabajos_mensuales)
         self.menuMenu_Trabajos.addSeparator()
+        self.menuRespaldo.addAction(self.actionRespaldar)
 
         self.retranslateUi(MainWindow)
 
@@ -134,9 +140,11 @@ class Ui_MainWindow(object):
         self.actionHistorial_de_trabajos_mensuales.setText(QCoreApplication.translate("MainWindow", u"Historial de trabajos mensuales", None))
         self.actionTrabajos_sin_saldar.setText(QCoreApplication.translate("MainWindow", u"Trabajos sin saldar", None))
         self.actionIngresar_pago.setText(QCoreApplication.translate("MainWindow", u"Ingresar pago", None))
+        self.actionRespaldar.setText(QCoreApplication.translate("MainWindow", u"Respaldar", None))
         self.label.setText("")
         self.menuMenu_Clientes.setTitle(QCoreApplication.translate("MainWindow", u"Clientes", None))
         self.menuMenu_Gastos_Ganancias.setTitle(QCoreApplication.translate("MainWindow", u"Gastos/Ganancias", None))
         self.menuMenu_Trabajos.setTitle(QCoreApplication.translate("MainWindow", u"Trabajos", None))
+        self.menuRespaldo.setTitle(QCoreApplication.translate("MainWindow", u"Respaldo", None))
     # retranslateUi
 

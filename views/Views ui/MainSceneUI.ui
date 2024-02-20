@@ -78,9 +78,16 @@
     <addaction name="actionHistorial_de_trabajos_mensuales"/>
     <addaction name="separator"/>
    </widget>
+   <widget class="QMenu" name="menuRespaldo">
+    <property name="title">
+     <string>Respaldo</string>
+    </property>
+    <addaction name="actionRespaldar"/>
+   </widget>
    <addaction name="menuMenu_Clientes"/>
    <addaction name="menuMenu_Trabajos"/>
    <addaction name="menuMenu_Gastos_Ganancias"/>
+   <addaction name="menuRespaldo"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionNuevo_Cliente">
@@ -161,6 +168,11 @@
   <action name="actionIngresar_pago">
    <property name="text">
     <string>Ingresar pago</string>
+   </property>
+  </action>
+  <action name="actionRespaldar">
+   <property name="text">
+    <string>Respaldar</string>
    </property>
   </action>
  </widget>
