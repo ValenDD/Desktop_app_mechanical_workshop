@@ -41,3 +41,44 @@ Welcome to our **Automotive Workshop Management Software**. This tool is designe
 
 ---
 
+# 🚗 **Software de Gestión para Talleres Automotrices** 🔧
+
+---
+
+## 🛠️ **Introducción**
+
+Bienvenidos al **Software de Gestión para Talleres Automotrices**. Esta herramienta está diseñada para optimizar las operaciones de talleres automotrices gestionando usuarios, las tareas realizadas y los ingresos mensuales de manera eficiente. Nuestro software busca simplificar las tareas administrativas de su taller, permitiéndole concentrarse en ofrecer servicios de alta calidad a sus clientes.
+
+---
+
+## 📥 **Instrucciones de Instalación**
+
+### ⚙️ **Prerrequisitos**
+
+- **🐍 Python**: Asegúrese de que Python esté instalado en su sistema. Este software ha sido probado con Python 3.x.
+- **🐘 PostgreSQL**: Necesitará tener instalado PostgreSQL con las siguientes configuraciones:
+  - **Contraseña**: `1234`
+  - **Puerto**: `5432`
+
+### 📋 **Pasos**
+
+1. **📦 Instalar Requerimientos de Python**: Navegue al directorio raíz de este proyecto en su terminal o línea de comandos. Ejecute el siguiente comando para instalar las librerías de Python necesarias especificadas en `requirements.txt`:
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+2. **🐘 Instalar PostgreSQL**: Si aún no lo ha hecho, descargue e instale PostgreSQL. Durante la instalación, establezca la contraseña en `1234` y el puerto en `5432` para coincidir con la configuración predeterminada de la base de datos del software.
+
+    > **Importante**: Para asegurar que su sistema pueda interactuar con PostgreSQL desde la línea de comandos, debe agregar la ruta hacia el directorio `bin` de PostgreSQL a la variable de entorno PATH de su sistema. Este directorio se encuentra típicamente dentro de la ruta de instalación de PostgreSQL (por ejemplo, `C:/Program Files/PostgreSQL/<versión>/bin` en Windows o `/usr/local/pgsql/bin` en sistemas Unix). Puede modificar la variable PATH a través de la configuración de entorno de su sistema. Agregar PostgreSQL al PATH permite ejecutar comandos de PostgreSQL desde cualquier ventana de terminal.
+
+3. **🛠️ Ejecutar PyInstaller**: Para construir la aplicación, ejecute el siguiente comando en su terminal o línea de comandos:
+
+    ```bash
+    pyinstaller dualD.spec
+    ```
+
+    Esto generará una versión ejecutable del software en el directorio `dist`.
+
+4. **🚀 Disfrutar del Software**: Una vez completada la instalación, navegue a la carpeta `dist`, encuentre el ejecutable y ejecútelo para comenzar a gestionar su taller automotriz de manera más eficiente.
+
